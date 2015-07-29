@@ -1,5 +1,6 @@
 module V1
   class BaseResource < JSONAPI::Resource
+    abstract
 
     class << self
       def creatable_fields(context)
