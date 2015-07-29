@@ -17,30 +17,25 @@ RSpec.describe Suit do
   end
 
   it "can get and set the initial" do
-    subject.initial = "s"
-    expect(subject.initial).to eq "s"
+    subject.initial = "S"
+    expect(subject.initial).to eq "S"
   end
 
   it "uses the name as the primary_key" do
-    subject.id = "s"
-    expect(subject.initial).to eq "s"
+    subject.id = "S"
+    expect(subject.initial).to eq "S"
   end
 
   it "can find the suit using the name" do
-    suit = FactoryGirl.create(:suit, initial: "s")
-    expect(Suit.find("s")).to eq suit
+    expect(Suit.find("S")).not_to be_nil
   end
 
   it "seeds the four traditional suits as expected" do
-    BlackjackRailsApi::Application.load_tasks
-    Rake::Task["db:seed"].execute
-    expect(Suit.count).to eq 4
-
     [
-      ["s","spades","black"],
-      ["c","clubs","black"],
-      ["h","hearts","red"],
-      ["d","diamonds","red"]
+      ["S","spades","black"],
+      ["C","clubs","black"],
+      ["H","hearts","red"],
+      ["D","diamonds","red"]
     ].each do |intitial, name, color|
       expect(Suit.find_by(name: name, color: Suit.colors[color])).not_to be_nil
     end
