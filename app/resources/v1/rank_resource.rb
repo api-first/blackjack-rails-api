@@ -1,10 +1,9 @@
 module V1
-  class SuitResource < BaseResource
+  class RankResource < BaseResource
     include AlternatePrimaryKey
     include ReadOnlyResource
 
     attribute :initial
-    attribute :color
-
+    attribute :name
   end
 end

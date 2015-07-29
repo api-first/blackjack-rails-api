@@ -1,5 +1,5 @@
 module V1
-  RSpec.describe SuitResource do
+  RSpec.describe RankResource do
 
     it "has no creatable fields" do
       expect(described_class.creatable_fields(nil)).to eq []
@@ -10,7 +10,7 @@ module V1
     end
 
     it "has the fetchable fields name and color" do
-      expect(described_class.new(Suit.new).fetchable_fields.sort).to eq [:id, :initial, :color].sort
+      expect(described_class.new(Rank.new).fetchable_fields.sort).to eq [:id, :initial, :name].sort
     end
 
   end

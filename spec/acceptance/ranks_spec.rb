@@ -1,29 +1,29 @@
 require "api_documentation_helper"
 
-RSpec.resource "Suits" do
+RSpec.resource "Ranks" do
   header "Content-Type", "application/vnd.api+json"
 
   before do
     BlackjackRailsApi::Application.load_tasks
-    Rake::Task["seed:suits"].execute
+    Rake::Task["seed:ranks"].execute
   end
 
-  get "/v1/suits/:id" do
+  get "/v1/ranks/:id" do
     parameter :id, <<-DESC, required: true
-      ID of the suit to be retrieved.
+      ID of the rank to be retrieved.
     DESC
 
     let(:id) do
-      "S"
+      "2"
     end
 
-    example_request "GET /v1/suits/:id" do
+    example_request "GET /v1/ranks/:id" do
       expect(status).to eq 200
     end
   end
 
-  get "/v1/suits" do
-    example_request "GET /v1/suits" do
+  get "/v1/ranks" do
+    example_request "GET /v1/ranks" do
       expect(status).to eq 200
     end
   end

@@ -16,14 +16,19 @@ RSpec.describe Suit do
     expect(subject.name).to eq "spades"
   end
 
+  it "can get and set the initial" do
+    subject.initial = "s"
+    expect(subject.initial).to eq "s"
+  end
+
   it "uses the name as the primary_key" do
-    subject.id = "spades"
-    expect(subject.name).to eq "spades"
+    subject.id = "s"
+    expect(subject.initial).to eq "s"
   end
 
   it "can find the suit using the name" do
-    suit = FactoryGirl.create(:suit, name: "spades")
-    expect(Suit.find("spades")).to eq suit
+    suit = FactoryGirl.create(:suit, initial: "s")
+    expect(Suit.find("s")).to eq suit
   end
 
   it "seeds the four traditional suits as expected" do
@@ -32,11 +37,11 @@ RSpec.describe Suit do
     expect(Suit.count).to eq 4
 
     [
-      ["spades","black"],
-      ["clubs","black"],
-      ["hearts","red"],
-      ["diamonds","red"]
-    ].each do |name, color|
+      ["s","spades","black"],
+      ["c","clubs","black"],
+      ["h","hearts","red"],
+      ["d","diamonds","red"]
+    ].each do |intitial, name, color|
       expect(Suit.find_by(name: name, color: Suit.colors[color])).not_to be_nil
     end
   end
