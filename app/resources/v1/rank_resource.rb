@@ -1,6 +1,6 @@
 module V1
   class RankResource < BaseResource
-    include AlternatePrimaryKey
+    include StringPrimaryKey
     include ReadOnlyResource
 
     attribute :initial
