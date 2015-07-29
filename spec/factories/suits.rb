@@ -4,12 +4,12 @@ FactoryGirl.define do
     name "spades"
     color "black"
     factory :spades do
-      intitial "S"
+      initial "S"
       name "spades"
       color "black"
     end
     factory :clubs do
-      intitial "C"
+      initial "C"
       name "clubs"
       color "black"
     end
