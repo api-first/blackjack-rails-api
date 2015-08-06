@@ -11,19 +11,26 @@ namespace :seed do
   end
 
   task ranks: :environment do
-    ranks = []
-    pips = (2..10).to_a
-    ranks += pips.zip(pips)
-
-    ranks +=  [
-      ["J", "Jack"],
-      ["Q", "Queen"],
-      ["K", "King"],
-      ["A", "Ace"]
+    ranks =  [
+      ["2", "2", [2]],
+      ["3", "3", [3]],
+      ["4", "4", [4]],
+      ["5", "5", [5]],
+      ["6", "6", [6]],
+      ["7", "7", [7]],
+      ["8", "8", [8]],
+      ["9", "9", [9]],
+      ["10", "10", [10]],
+      ["J", "Jack", [10]],
+      ["Q", "Queen", [10]],
+      ["K", "King", [10]],
+      ["A", "Ace", [1,11]]
     ]
 
-    ranks.each do |initial, name|
-      Rank.find_or_create_by!(initial: initial, name: name)
+    ranks.each do |initial, name, values|
+      Rank.find_or_initialize_by(initial: initial, name: name).tap do |rank|
+        rank.values = values
+      end.save!
     end
   end
 end

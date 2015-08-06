@@ -1,6 +1,10 @@
 class Rank < ActiveRecord::Base
   self.primary_key = :initial
 
+  serialize :values, JSON
+
+  validate :_values_is_not_empty
+
   def numbered?
     initial.to_i > 0
   end
@@ -8,4 +12,11 @@ class Rank < ActiveRecord::Base
   def face?
     initial.to_i == 0
   end
+
+  def _values_is_not_empty
+    if values.empty?
+      errors.add :values, "must not be empty"
+    end
+  end
+
 end
