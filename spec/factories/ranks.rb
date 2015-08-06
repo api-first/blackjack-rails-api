@@ -30,5 +30,11 @@ FactoryGirl.define do
       name "Ace"
       values [1,11]
     end
+
+    initialize_with do
+      Rank.find_or_initialize_by(initial: initial, name: name).tap do |rank|
+        rank.values = values
+      end
+    end
   end
 end

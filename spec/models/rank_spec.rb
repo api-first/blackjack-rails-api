@@ -21,9 +21,6 @@ RSpec.describe Rank do
   end
 
   it "seeds all the ranks" do
-    BlackjackRailsApi::Application.load_tasks
-    Rake::Task["db:seed"].execute
-
     expected_initials_and_values = {
       "2" => [2],
       "3" => [3],
@@ -72,6 +69,16 @@ RSpec.describe Rank do
     subject.values = []
     subject.valid?
     expect(subject.errors[:values]).not_to be_empty
+  end
+
+  it "has an order attribute that is required" do
+    subject.order = nil
+    subject.valid?
+    expect(subject.errors[:order]).not_to be_empty
+  end
+
+  it "sorts the ranks by order by default" do
+    expect(Rank.pluck(:initial)).to eq ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
   end
 
 end

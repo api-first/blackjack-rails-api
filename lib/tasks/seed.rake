@@ -27,8 +27,9 @@ namespace :seed do
       ["A", "Ace", [1,11]]
     ]
 
-    ranks.each do |initial, name, values|
-      Rank.find_or_initialize_by(initial: initial, name: name).tap do |rank|
+    ranks.each_with_index do |attributes, index|
+      initial, name, values = attributes
+      Rank.find_or_initialize_by(initial: initial, name: name, order: index).tap do |rank|
         rank.values = values
       end.save!
     end

@@ -6,5 +6,6 @@ module V1
     attribute :initial
     attribute :name
     attribute :values
+    attribute :order
   end
 end
