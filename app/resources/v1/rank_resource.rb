@@ -5,5 +5,6 @@ module V1
 
     attribute :initial
     attribute :name
+    attribute :values
   end
 end
