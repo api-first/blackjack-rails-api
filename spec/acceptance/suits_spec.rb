@@ -3,11 +3,6 @@ require "api_documentation_helper"
 RSpec.resource "Suits" do
   header "Content-Type", "application/vnd.api+json"
 
-  before do
-    BlackjackRailsApi::Application.load_tasks
-    Rake::Task["seed:suits"].execute
-  end
-
   get "/v1/suits/:id" do
     parameter :id, <<-DESC, required: true
       ID of the suit to be retrieved.
