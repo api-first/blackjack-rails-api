@@ -8,7 +8,6 @@ module V1
     relationship :rank, to: :one
 
     class << self
-
       def find_by_key(key, options = {})
         new(Card.find(key))
       end
@@ -16,7 +15,11 @@ module V1
       def find(filters, options = {})
         Card.all.map { |card| new(card) }
       end
-
     end
+
+    def fetchable_fields
+      super - [:created_at, :updated_at]
+    end
+
   end
 end
