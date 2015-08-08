@@ -21,7 +21,7 @@ RSpec.describe Suit do
     expect(subject.initial).to eq "S"
   end
 
-  it "uses the name as the primary_key" do
+  it "uses the initial as the primary_key" do
     subject.id = "S"
     expect(subject.initial).to eq "S"
   end
