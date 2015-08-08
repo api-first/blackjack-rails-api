@@ -12,7 +12,7 @@ RSpec.describe Card do
     described_class.new(rank, suit)
   end
 
-  it "it initialized with a rank and a suit" do
+  it "is initialized with a rank and a suit" do
     expect(subject.rank).to eq rank
     expect(subject.suit).to eq suit
   end
