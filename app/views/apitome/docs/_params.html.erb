@@ -1,0 +1,30 @@
+<section class="params">
+  <h3><%= t(:parameters) %></h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tr>
+        <% param_headers(params).each do |title| %>
+          <th><%= title %></th>
+        <% end %>
+      </tr>
+      <% params.each do |param| %>
+        <tr>
+          <td class="name">
+            <% if param['scope'] %>
+              <%= "#{param['scope']}[#{param['name']}]" %>
+            <% else %>
+              <%= param['name'] %>
+            <% end %>
+            <% if param['required'] %>
+              <span class="label label-danger required">required</span>
+            <% end %>
+          </td>
+          <td class="description"><%= raw param['description'] %></td>
+          <% param_extras(params).each do |extra| %>
+            <td class="extra"><%= param[extra] %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</section>
