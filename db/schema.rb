@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808224328) do
+ActiveRecord::Schema.define(version: 20150910152832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "players", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ranks", force: :cascade do |t|
     t.string   "initial",                   null: false
@@ -40,6 +45,18 @@ ActiveRecord::Schema.define(version: 20150808224328) do
   add_index "suits", ["color"], name: "index_suits_on_color", using: :btree
   add_index "suits", ["initial"], name: "index_suits_on_initial", unique: true, using: :btree
   add_index "suits", ["name"], name: "index_suits_on_name", unique: true, using: :btree
+
+  create_table "table_player_positions", force: :cascade do |t|
+    t.integer  "table_id",   null: false
+    t.integer  "position",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "player_id",  null: false
+    t.integer  "order",      null: false
+  end
+
+  add_index "table_player_positions", ["player_id"], name: "index_table_player_positions_on_player_id", using: :btree
+  add_index "table_player_positions", ["table_id"], name: "index_table_player_positions_on_table_id", using: :btree
 
   create_table "table_rule_sets", force: :cascade do |t|
     t.datetime "created_at",                                                                      null: false
@@ -76,4 +93,15 @@ ActiveRecord::Schema.define(version: 20150808224328) do
 
   add_index "table_rule_sets", ["name"], name: "index_table_rule_sets_on_name", unique: true, using: :btree
 
+  create_table "tables", force: :cascade do |t|
+    t.integer  "table_rule_set_id", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "tables", ["table_rule_set_id"], name: "index_tables_on_table_rule_set_id", using: :btree
+
+  add_foreign_key "table_player_positions", "players"
+  add_foreign_key "table_player_positions", "tables"
+  add_foreign_key "tables", "table_rule_sets"
 end

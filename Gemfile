@@ -15,6 +15,9 @@ gem "jsonapi-resources", github: "cerebris/jsonapi-resources", branch: "master"
 # web server
 gem 'puma'
 
+# row sorting
+gem "ranked-model", "~> 0.4.0"
+
 group :development, :test do
   # `byebug` anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
