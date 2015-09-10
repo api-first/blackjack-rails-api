@@ -38,6 +38,11 @@ group :development do
   gem 'spring-commands-rspec'
 end
 
+group :test do
+  # runs after_commit callbacks even with transactional fixtures
+  gem "test_after_commit"
+end
+
 # generate api documentation through rspec acceptance tests
 gem "rspec_api_documentation"
 

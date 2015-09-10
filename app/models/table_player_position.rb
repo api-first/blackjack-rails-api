@@ -15,6 +15,10 @@ class TablePlayerPosition < ActiveRecord::Base
 
   ranks :order, with_same: [:table_id, :position]
 
+  after_commit :_create_join_event, on: [:create]
+
+  after_commit :_create_leave_event, on: [:destroy]
+
   def maximum_position
     return 1 unless table
 
@@ -53,5 +57,13 @@ class TablePlayerPosition < ActiveRecord::Base
     if others_at_position_count >= maximum_players_at_position
       errors.add :position, "already has the maximum number of players"
     end
+  end
+
+  def _create_join_event
+    TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("join"))
+  end
+
+  def _create_leave_event
+    TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("leave"))
   end
 end

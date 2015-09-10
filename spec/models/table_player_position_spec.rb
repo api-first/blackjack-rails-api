@@ -72,4 +72,16 @@ RSpec.describe TablePlayerPosition do
     table_player_position_two = FactoryGirl.create(:table_player_position, table: table)
     expect(table_player_position_two).not_to be_controlling
   end
+
+  it "creates events when created and destroyed" do
+    table = FactoryGirl.create(:table)
+    player = FactoryGirl.create(:player)
+    position = 1
+    subject = FactoryGirl.create(:table_player_position, table: table, player: player, position: position)
+    subject.destroy!
+    join_event = TablePlayerPositionEvent.find_by(table_id: table.id, player_id: player.id, position: position, event: TablePlayerPositionEvent.events["join"])
+    leave_event = TablePlayerPositionEvent.find_by(table_id: table.id, player_id: player.id, position: position, event: TablePlayerPositionEvent.events["leave"])
+    expect(join_event).not_to be_nil
+    expect(leave_event).not_to be_nil
+  end
 end
