@@ -84,4 +84,8 @@ RSpec.describe TablePlayerPosition do
     expect(join_event).not_to be_nil
     expect(leave_event).not_to be_nil
   end
+
+  it "has many hands" do
+    expect(subject.hands.new).to be_a Hand
+  end
 end

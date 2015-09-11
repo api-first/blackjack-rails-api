@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910154953) do
+ActiveRecord::Schema.define(version: 20150911144046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hand_cards", force: :cascade do |t|
+    t.integer  "hand_id",                   null: false
+    t.string   "card_id",                   null: false
+    t.integer  "order",                     null: false
+    t.boolean  "face_up",    default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "hand_cards", ["card_id"], name: "index_hand_cards_on_card_id", using: :btree
+  add_index "hand_cards", ["hand_id"], name: "index_hand_cards_on_hand_id", using: :btree
+
+  create_table "hands", force: :cascade do |t|
+    t.integer  "round_id",                 null: false
+    t.integer  "table_player_position_id", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "hands", ["round_id"], name: "index_hands_on_round_id", using: :btree
+  add_index "hands", ["table_player_position_id"], name: "index_hands_on_table_player_position_id", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -33,6 +55,16 @@ ActiveRecord::Schema.define(version: 20150910154953) do
   add_index "ranks", ["initial"], name: "index_ranks_on_initial", unique: true, using: :btree
   add_index "ranks", ["name"], name: "index_ranks_on_name", using: :btree
   add_index "ranks", ["order"], name: "index_ranks_on_order", unique: true, using: :btree
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "table_id",                                 null: false
+    t.datetime "initial_betting_closed_at",                null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "active",                    default: true, null: false
+  end
+
+  add_index "rounds", ["table_id"], name: "index_rounds_on_table_id", using: :btree
 
   create_table "suits", id: false, force: :cascade do |t|
     t.string   "name",       null: false
@@ -106,16 +138,34 @@ ActiveRecord::Schema.define(version: 20150910154953) do
   add_index "table_rule_sets", ["name"], name: "index_table_rule_sets_on_name", unique: true, using: :btree
 
   create_table "tables", force: :cascade do |t|
-    t.integer  "table_rule_set_id", null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "table_rule_set_id",                null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "open",              default: true, null: false
   end
 
   add_index "tables", ["table_rule_set_id"], name: "index_tables_on_table_rule_set_id", using: :btree
 
+  create_table "wagers", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "hand_id",    null: false
+    t.integer  "player_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "wagers", ["hand_id"], name: "index_wagers_on_hand_id", using: :btree
+  add_index "wagers", ["player_id"], name: "index_wagers_on_player_id", using: :btree
+
+  add_foreign_key "hand_cards", "hands"
+  add_foreign_key "hands", "rounds"
+  add_foreign_key "hands", "table_player_positions"
+  add_foreign_key "rounds", "tables"
   add_foreign_key "table_player_position_events", "players"
   add_foreign_key "table_player_position_events", "tables"
   add_foreign_key "table_player_positions", "players"
   add_foreign_key "table_player_positions", "tables"
   add_foreign_key "tables", "table_rule_sets"
+  add_foreign_key "wagers", "hands"
+  add_foreign_key "wagers", "players"
 end

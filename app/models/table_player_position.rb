@@ -5,6 +5,8 @@ class TablePlayerPosition < ActiveRecord::Base
 
   belongs_to :player
 
+  has_many :hands
+
   validates :table, presence: true
 
   validates :player, presence: true

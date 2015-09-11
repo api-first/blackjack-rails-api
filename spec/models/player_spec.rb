@@ -5,4 +5,8 @@ RSpec.describe Player do
     expect(subject.table_player_positions.first).to be_a TablePlayerPosition
   end
 
+  it "has many wagers" do
+    expect(subject.wagers.new).to be_a Wager
+  end
+
 end
