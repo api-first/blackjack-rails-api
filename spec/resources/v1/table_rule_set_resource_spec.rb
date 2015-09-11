@@ -31,6 +31,8 @@ module V1
         :player_must_stand_on_soft_21,
         :restrict_doubling_to_hard_totals,
         :dealer_wins_ties,
+        :round_initial_betting_window_seconds,
+        :minimum_wager_amount,
       ].sort
     end
 

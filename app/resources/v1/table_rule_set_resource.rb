@@ -28,7 +28,9 @@ module V1
       :non_controlling_player_chooses_split_hand_to_bet_if_not_following,
       :player_must_stand_on_soft_21,
       :restrict_doubling_to_hard_totals,
-      :dealer_wins_ties
+      :dealer_wins_ties,
+      :round_initial_betting_window_seconds,
+      :minimum_wager_amount
     )
 
     class << self
@@ -61,7 +63,9 @@ module V1
           :non_controlling_player_chooses_split_hand_to_bet_if_not_following,
           :player_must_stand_on_soft_21,
           :restrict_doubling_to_hard_totals,
-          :dealer_wins_ties
+          :dealer_wins_ties,
+          :round_initial_betting_window_seconds,
+          :minimum_wager_amount
         ]
       end
 

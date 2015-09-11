@@ -28,5 +28,7 @@ FactoryGirl.define do
     player_must_stand_on_soft_21 true
     restrict_doubling_to_hard_totals nil
     dealer_wins_ties false
+    round_initial_betting_window_seconds 30
+    minimum_wager_amount 25
   end
 end

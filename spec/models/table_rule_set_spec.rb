@@ -389,4 +389,14 @@ RSpec.describe TableRuleSet do
     subject.valid?
     expect(subject.errors[:dealer_wins_ties]).to include "must be true or false"
   end
+
+  it "has the attribute initial_betting_window_seconds" do
+    subject.round_initial_betting_window_seconds = 10
+    expect(subject.round_initial_betting_window_seconds).to eq 10
+  end
+
+  it "has a minimum_wager_amount attribute" do
+    subject.minimum_wager_amount = 50
+    expect(subject.minimum_wager_amount).to eq 50
+  end
 end

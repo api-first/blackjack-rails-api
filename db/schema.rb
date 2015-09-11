@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911144046) do
+ActiveRecord::Schema.define(version: 20150911153142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 20150911144046) do
     t.boolean  "player_must_stand_on_soft_21",                                    default: true,  null: false
     t.text     "restrict_doubling_to_hard_totals"
     t.boolean  "dealer_wins_ties",                                                default: false, null: false
+    t.integer  "round_initial_betting_window_seconds",                            default: 30,    null: false
+    t.integer  "minimum_wager_amount",                                                            null: false
   end
 
   add_index "table_rule_sets", ["name"], name: "index_table_rule_sets_on_name", unique: true, using: :btree
@@ -148,10 +150,11 @@ ActiveRecord::Schema.define(version: 20150911144046) do
 
   create_table "wagers", force: :cascade do |t|
     t.integer  "amount"
-    t.integer  "hand_id",    null: false
-    t.integer  "player_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "hand_id",                null: false
+    t.integer  "player_id",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "kind",       default: 0, null: false
   end
 
   add_index "wagers", ["hand_id"], name: "index_wagers_on_hand_id", using: :btree

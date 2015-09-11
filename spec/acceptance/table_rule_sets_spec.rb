@@ -260,6 +260,23 @@ RSpec.resource "Table Rule Sets" do
       table_rule_set.dealer_wins_ties
     end
 
+    parameter "round-initial-betting-window-seconds", <<-DESC, scope: :attributes
+      An integer that indicates the number of seconds that the initial betting window will
+      last for each round at the table.
+    DESC
+
+    let "round-initial-betting-window-seconds" do
+      30
+    end
+
+    parameter "minimum-wager-amount", <<-DESC, scope: :attributes
+      An integer that indicates the minimum initial wager amount.
+    DESC
+
+    let "minimum-wager-amount" do
+      25
+    end
+
     example_request "POST /v1/table-rule-sets" do
       expect(status).to eq 201
       parsed = JSON.parse(response_body)
