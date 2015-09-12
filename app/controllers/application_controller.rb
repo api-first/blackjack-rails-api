@@ -3,6 +3,8 @@ class ApplicationController < JSONAPI::ResourceController
 
   protect_from_forgery with: :null_session
 
+  before_action :doorkeeper_authorize!
+
   # Context for the JSONAPI::ResourceController methods
   def context
     {

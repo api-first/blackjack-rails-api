@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Suits" do
+RSpec.resource "Suits", :authenticated do
   header "Content-Type", "application/vnd.api+json"
 
   get "/v1/suits/:id" do

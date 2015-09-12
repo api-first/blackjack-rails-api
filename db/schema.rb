@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911153142) do
+ActiveRecord::Schema.define(version: 20150912035410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,53 @@ ActiveRecord::Schema.define(version: 20150911153142) do
   add_index "hands", ["round_id"], name: "index_hands_on_round_id", using: :btree
   add_index "hands", ["table_player_position_id"], name: "index_hands_on_table_player_position_id", using: :btree
 
+  create_table "oauth_access_grants", force: :cascade do |t|
+    t.integer  "resource_owner_id", null: false
+    t.integer  "application_id",    null: false
+    t.string   "token",             null: false
+    t.integer  "expires_in",        null: false
+    t.text     "redirect_uri",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "revoked_at"
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+
+  create_table "oauth_access_tokens", force: :cascade do |t|
+    t.integer  "resource_owner_id"
+    t.integer  "application_id"
+    t.string   "token",             null: false
+    t.string   "refresh_token"
+    t.integer  "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at",        null: false
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+
+  create_table "oauth_applications", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "uid",                       null: false
+    t.string   "secret",                    null: false
+    t.text     "redirect_uri",              null: false
+    t.string   "scopes",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
   create_table "players", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id",    null: false
   end
+
+  add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "ranks", force: :cascade do |t|
     t.string   "initial",                   null: false
@@ -135,6 +178,7 @@ ActiveRecord::Schema.define(version: 20150911153142) do
     t.boolean  "dealer_wins_ties",                                                default: false, null: false
     t.integer  "round_initial_betting_window_seconds",                            default: 30,    null: false
     t.integer  "minimum_wager_amount",                                                            null: false
+    t.integer  "minimum_players_per_round",                                       default: 1,     null: false
   end
 
   add_index "table_rule_sets", ["name"], name: "index_table_rule_sets_on_name", unique: true, using: :btree
@@ -147,6 +191,13 @@ ActiveRecord::Schema.define(version: 20150911153142) do
   end
 
   add_index "tables", ["table_rule_set_id"], name: "index_tables_on_table_rule_set_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "wagers", force: :cascade do |t|
     t.integer  "amount"
@@ -163,6 +214,7 @@ ActiveRecord::Schema.define(version: 20150911153142) do
   add_foreign_key "hand_cards", "hands"
   add_foreign_key "hands", "rounds"
   add_foreign_key "hands", "table_player_positions"
+  add_foreign_key "players", "users"
   add_foreign_key "rounds", "tables"
   add_foreign_key "table_player_position_events", "players"
   add_foreign_key "table_player_position_events", "tables"

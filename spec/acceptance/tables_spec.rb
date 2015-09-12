@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Tables" do
+RSpec.resource "Tables", :authenticated do
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/tables" do
@@ -17,7 +17,7 @@ RSpec.resource "Tables" do
     end
 
     parameter "table-rule-set", <<-DESC, scope: :relationships, required: true
-      The rule set that govers the table.
+      The rule set that governs the table.
     DESC
 
     let "table-rule-set" do

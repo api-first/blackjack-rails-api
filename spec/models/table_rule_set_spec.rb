@@ -83,7 +83,7 @@ RSpec.describe TableRuleSet do
     [false, true].each do |original_bets_only|
       subject.original_bets_only = original_bets_only
       subject.valid?
-      expect(subject.errors[:original_bets_only]).to include "must be nil unless original_bets_only is true"
+      expect(subject.errors[:original_bets_only]).to include "must be nil unless no_hole_card is true"
     end
   end
 
@@ -91,7 +91,7 @@ RSpec.describe TableRuleSet do
     subject.no_hole_card = true
     subject.original_bets_only = nil
     subject.valid?
-    expect(subject.errors[:original_bets_only]).to include "must be true or false if original_bets_only is true"
+    expect(subject.errors[:original_bets_only]).to include "must be true or false if no_hole_card is true"
   end
 
   it "has an initial_player_card_face_up attribute that defaults to true" do
@@ -398,5 +398,10 @@ RSpec.describe TableRuleSet do
   it "has a minimum_wager_amount attribute" do
     subject.minimum_wager_amount = 50
     expect(subject.minimum_wager_amount).to eq 50
+  end
+
+  it "has a minimum_players_per_round attribute" do
+    subject.minimum_players_per_round = 1
+    expect(subject.minimum_players_per_round).to eq 1
   end
 end

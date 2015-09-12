@@ -30,5 +30,6 @@ FactoryGirl.define do
     dealer_wins_ties false
     round_initial_betting_window_seconds 30
     minimum_wager_amount 25
+    minimum_players_per_round 1
   end
 end

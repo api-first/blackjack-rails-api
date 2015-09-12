@@ -15,6 +15,11 @@ gem "jsonapi-resources", github: "cerebris/jsonapi-resources", branch: "master"
 # web server
 gem 'puma'
 
+# password encryption for has_secure_password
+gem "bcrypt"
+
+gem "doorkeeper"
+
 # row sorting
 gem "ranked-model", "~> 0.4.0"
 
@@ -41,6 +46,8 @@ end
 group :test do
   # runs after_commit callbacks even with transactional fixtures
   gem "test_after_commit"
+
+  gem "database_cleaner", "~> 1.4.0"
 end
 
 # generate api documentation through rspec acceptance tests

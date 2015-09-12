@@ -9,4 +9,14 @@ RSpec.describe Player do
     expect(subject.wagers.new).to be_a Wager
   end
 
+  it "belongs to a user" do
+    expect(subject.build_user).to be_a User
+  end
+
+  it "validates the presence of a user" do
+    subject.user = nil
+    subject.valid?
+    expect(subject.errors[:user]).to include "can't be blank"
+  end
+
 end

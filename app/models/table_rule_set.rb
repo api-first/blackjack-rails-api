@@ -15,11 +15,11 @@ class TableRuleSet < ActiveRecord::Base
   validates :maximum_bets_per_player, numericality: { greater_than_or_equal_to: 1 }
 
   with_options unless: :no_hole_card do
-    validates :original_bets_only, inclusion: { in: [nil], message: "must be nil unless original_bets_only is true" }
+    validates :original_bets_only, inclusion: { in: [nil], message: "must be nil unless no_hole_card is true" }
   end
 
   with_options if: :no_hole_card do
-    validates :original_bets_only, inclusion: { in: [true, false], message: "must be true or false if original_bets_only is true" }
+    validates :original_bets_only, inclusion: { in: [true, false], message: "must be true or false if no_hole_card is true" }
   end
 
   validates :blackjack_pay_out, numericality: { greater_than: 0 }

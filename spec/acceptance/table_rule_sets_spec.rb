@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Table Rule Sets" do
+RSpec.resource "Table Rule Sets", :authenticated do
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/table-rule-sets" do

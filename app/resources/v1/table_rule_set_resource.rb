@@ -30,7 +30,8 @@ module V1
       :restrict_doubling_to_hard_totals,
       :dealer_wins_ties,
       :round_initial_betting_window_seconds,
-      :minimum_wager_amount
+      :minimum_wager_amount,
+      :minimum_players_per_round,
     )
 
     class << self
@@ -65,7 +66,8 @@ module V1
           :restrict_doubling_to_hard_totals,
           :dealer_wins_ties,
           :round_initial_betting_window_seconds,
-          :minimum_wager_amount
+          :minimum_wager_amount,
+          :minimum_players_per_round,
         ]
       end
 
