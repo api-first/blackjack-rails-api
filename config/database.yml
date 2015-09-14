@@ -13,5 +13,8 @@ test:
   database: blackjack-rails-api_test
   host: localhost
 
+staging:
+  url: <%= ENV['DATABASE_URL'] %>
+
 production:
   url: <%= ENV['DATABASE_URL'] %>
