@@ -51,6 +51,10 @@ group :test do
   gem "database_cleaner", "~> 1.4.0"
 end
 
+group :production do
+  gem "rails_12factor"
+end
+
 # generate api documentation through rspec acceptance tests
 gem "rspec_api_documentation"
 
