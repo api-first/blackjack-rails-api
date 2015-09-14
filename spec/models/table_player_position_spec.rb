@@ -24,14 +24,14 @@ RSpec.describe TablePlayerPosition do
   it "validates that the position is greater than or equal to 1" do
     subject.position = 0
     subject.valid?
-    expect(subject.errors[:position]).to include "must be greater than or equal to 1"
+    expect(subject.errors[:position]).to include "is not included in the list"
   end
 
   it "validates that the position is less than or equal to the maximum_position" do
-    expect(subject).to receive(:maximum_position).and_return(5)
+    expect(subject).to receive(:table_positions).and_return((1..5).to_a)
     subject.position = 6
     subject.valid?
-    expect(subject.errors[:position]).to include "must be less than or equal to 5"
+    expect(subject.errors[:position]).to include "is not included in the list"
   end
 
   it "delegates maximum_position to table" do
@@ -86,6 +86,43 @@ RSpec.describe TablePlayerPosition do
   end
 
   it "has many hands" do
-    expect(subject.hands.new).to be_a Hand
+    subject = FactoryGirl.build(:table_player_position)
+    expect(subject.hands.count).to eq 0
+    subject.save
+    expect(subject.hands.count).to eq 1
+  end
+
+  it "has many current_hands" do
+    subject = FactoryGirl.create(:table_player_position)
+    expect(subject.current_hands.count).to eq 1
+  end
+
+  it "creates a round for the table if there are none and the minimum positions is met" do
+    table_rule_set = FactoryGirl.create(:table_rule_set, minimum_players_per_round: 1)
+    table = FactoryGirl.create(:table, table_rule_set: table_rule_set)
+    FactoryGirl.create(:table_player_position, table: table)
+    table.reload
+    expect(table.current_round).not_to be_nil
+  end
+
+  it "creates hands for new positions when it should" do
+    table_rule_set = FactoryGirl.create(:table_rule_set, minimum_players_per_round: 1)
+    table = FactoryGirl.create(:table, table_rule_set: table_rule_set)
+    # it creates an initial hand for the first player
+    FactoryGirl.create(:table_player_position, table: table, position: 1)
+    expect(table.reload.current_round.hands.count).to eq 1
+
+    # it does not create an additional hand when there's a player at the same position
+    FactoryGirl.create(:table_player_position, table: table, position: 1)
+    expect(table.reload.current_round.hands.count).to eq 1
+
+    # it creates a new hand when a player joins at a new position
+    FactoryGirl.create(:table_player_position, table: table, position: 2)
+    expect(table.reload.current_round.hands.count).to eq 2
+
+    # it does not create a new hand when the initial betting window has closed
+    table.current_round.update_column(:initial_betting_closed_at, Time.now)
+    FactoryGirl.create(:table_player_position, table: table, position: 3)
+    expect(table.reload.current_round.hands.count).to eq 2
   end
 end

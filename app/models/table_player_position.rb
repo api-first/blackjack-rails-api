@@ -5,13 +5,11 @@ class TablePlayerPosition < ActiveRecord::Base
 
   belongs_to :player
 
-  has_many :hands
-
   validates :table, presence: true
 
   validates :player, presence: true
 
-  validates :position, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: :maximum_position }
+  validates :position, presence: true, inclusion: { in: :table_positions }
 
   validate :_fewer_than_maximum_players_at_position
 
@@ -20,6 +18,14 @@ class TablePlayerPosition < ActiveRecord::Base
   after_commit :_create_join_event, on: [:create]
 
   after_commit :_create_leave_event, on: [:destroy]
+
+  after_commit :_notify_table_player_joined, on: [:create]
+
+  def table_positions
+    return [] unless table
+
+    table.positions
+  end
 
   def maximum_position
     return 1 unless table
@@ -55,6 +61,14 @@ class TablePlayerPosition < ActiveRecord::Base
     all_at_position.sort_by(&:order).first == self
   end
 
+  def hands
+    Hand.joins(:round).where(position: position).where(rounds: { table_id: table_id })
+  end
+
+  def current_hands
+    hands.merge(Round.where(active: true))
+  end
+
   def _fewer_than_maximum_players_at_position
     if others_at_position_count >= maximum_players_at_position
       errors.add :position, "already has the maximum number of players"
@@ -67,5 +81,9 @@ class TablePlayerPosition < ActiveRecord::Base
 
   def _create_leave_event
     TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("leave"))
+  end
+
+  def _notify_table_player_joined
+    table.try(:player_joined, self)
   end
 end

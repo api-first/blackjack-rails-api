@@ -36,6 +36,13 @@ RSpec.describe "end-to-end flow" do
     player_id = JSON.parse(response.body)["data"]["id"]
     expect(player_id).not_to be_blank
 
+    # deposit money into the player's bank
+    # types of transactions
+    # deposits
+    # withdrawals
+    # wagers
+    # winnings
+
     # create a table rule set
     post(
       "/v1/table-rule-sets",
@@ -141,6 +148,78 @@ RSpec.describe "end-to-end flow" do
     )
     table_player_position_one = JSON.parse(response.body)["data"]["id"]
     expect(table_player_position_one).not_to be_nil
+
+    # get the current round for the table
+
+    get(
+      "/v1/tables/#{table_id}/current-round",
+      nil,
+      {
+        "Content-Type" => "application/vnd.api+json",
+        "Authorization" => "Bearer #{access_token}"
+      }
+    )
+
+    current_round_id = JSON.parse(response.body)["data"]["id"]
+
+    expect(current_round_id).not_to be_nil
+
+    # get the current hands for the table player position
+    get(
+      "/v1/table-player-positions/#{table_player_position_one}/hands",
+      nil,
+      {
+        "Content-Type" => "application/vnd.api+json",
+        "Authorization" => "Bearer #{access_token}"
+      }
+    )
+
+    expect(JSON.parse(response.body)["data"].size).to eq 1
+
+    current_hand_id = JSON.parse(response.body)["data"][0]["id"]
+    expect(current_hand_id).not_to be_nil
+
+    # place a wager on the hand
+
+    post(
+      "/v1/wagers",
+      {
+        data: {
+          type: "wagers",
+          attributes: {
+            amount: 100,
+            kind: "initial"
+          },
+          relationships: {
+            hand: {
+              data: {
+                id: current_hand_id,
+                type: "hands"
+              }
+            },
+            player: {
+              data: {
+                id: player_id,
+                type: "players"
+              }
+            }
+          }
+        }
+      }.to_json,
+      {
+        "Content-Type" => "application/vnd.api+json",
+        "Authorization" => "Bearer #{access_token}"
+      }
+    )
+    wager_id = JSON.parse(response.body)["data"]["id"]
+
+    # wait for the cards to be dealt
+
+    # choose the action to play
+
+    # receive the winnings
+
+
   end
 
 end

@@ -18,7 +18,9 @@ module V1
     end
 
     it "can fetch the correct fields" do
-      expect(described_class.new(TablePlayerPosition.new).fetchable_fields.sort).to eq (creatable_fields + [:id, :created_at, :updated_at]).sort
+      expect(described_class.new(TablePlayerPosition.new).fetchable_fields.sort).to eq(
+        (creatable_fields + [:id, :created_at, :updated_at, :hands, :current_hands]).sort
+      )
     end
 
   end

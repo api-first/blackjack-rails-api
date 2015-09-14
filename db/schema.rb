@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912035410) do
+ActiveRecord::Schema.define(version: 20150913233650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,13 @@ ActiveRecord::Schema.define(version: 20150912035410) do
   add_index "hand_cards", ["hand_id"], name: "index_hand_cards_on_hand_id", using: :btree
 
   create_table "hands", force: :cascade do |t|
-    t.integer  "round_id",                 null: false
-    t.integer  "table_player_position_id", null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "round_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "position",   null: false
   end
 
   add_index "hands", ["round_id"], name: "index_hands_on_round_id", using: :btree
-  add_index "hands", ["table_player_position_id"], name: "index_hands_on_table_player_position_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -192,6 +191,16 @@ ActiveRecord::Schema.define(version: 20150912035410) do
 
   add_index "tables", ["table_rule_set_id"], name: "index_tables_on_table_rule_set_id", using: :btree
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "kind",       null: false
+    t.decimal  "amount",     null: false
+    t.integer  "player_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "transactions", ["player_id"], name: "index_transactions_on_player_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
     t.string   "password_digest", null: false
@@ -200,7 +209,7 @@ ActiveRecord::Schema.define(version: 20150912035410) do
   end
 
   create_table "wagers", force: :cascade do |t|
-    t.integer  "amount"
+    t.decimal  "amount"
     t.integer  "hand_id",                null: false
     t.integer  "player_id",              null: false
     t.datetime "created_at",             null: false
@@ -213,7 +222,6 @@ ActiveRecord::Schema.define(version: 20150912035410) do
 
   add_foreign_key "hand_cards", "hands"
   add_foreign_key "hands", "rounds"
-  add_foreign_key "hands", "table_player_positions"
   add_foreign_key "players", "users"
   add_foreign_key "rounds", "tables"
   add_foreign_key "table_player_position_events", "players"
@@ -221,6 +229,7 @@ ActiveRecord::Schema.define(version: 20150912035410) do
   add_foreign_key "table_player_positions", "players"
   add_foreign_key "table_player_positions", "tables"
   add_foreign_key "tables", "table_rule_sets"
+  add_foreign_key "transactions", "players"
   add_foreign_key "wagers", "hands"
   add_foreign_key "wagers", "players"
 end

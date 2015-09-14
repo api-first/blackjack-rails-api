@@ -2,7 +2,12 @@ module V1
   class TablePlayerPositionResource < BaseResource
 
     has_one :table
+
     has_one :player
+
+    has_many :hands
+
+    has_many :current_hands, class_name: "Hand"
 
     attribute :position
 

@@ -20,6 +20,12 @@ RSpec.describe Table do
     expect(subject.maximum_players_per_position).to eq subject.table_rule_set.maximum_players_per_position
   end
 
+  it "has an array of the valid positions for the table" do
+    table_rule_set = TableRuleSet.new(player_position_count: 5)
+    subject.table_rule_set = table_rule_set
+    expect(subject.positions).to eq [1,2,3,4,5]
+  end
+
   it "has_many table_player_positions" do
     subject.table_player_positions.new
     expect(subject.table_player_positions.size).to eq 1

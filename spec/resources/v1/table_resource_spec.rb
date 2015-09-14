@@ -16,7 +16,7 @@ module V1
     end
 
     it "can fetch the correct fields" do
-      expect(described_class.new(Table.new).fetchable_fields.sort).to eq (creatable_and_updatable_fields + [:id, :created_at, :updated_at]).sort
+      expect(described_class.new(Table.new).fetchable_fields.sort).to eq (creatable_and_updatable_fields + [:id, :created_at, :updated_at, :current_round, :rounds]).sort
     end
 
   end

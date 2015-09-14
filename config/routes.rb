@@ -8,8 +8,11 @@ Rails.application.routes.draw do
     jsonapi_resources :table_rule_sets
     jsonapi_resources :tables
     jsonapi_resources :table_player_positions
+    jsonapi_resources :rounds
+    jsonapi_resources :hands
     jsonapi_resources :users
     jsonapi_resources :players
+    jsonapi_resources :wagers
   end
 
 end

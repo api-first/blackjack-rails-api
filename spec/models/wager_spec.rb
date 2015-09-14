@@ -40,6 +40,11 @@ RSpec.describe Wager do
     expect(subject.errors[:created_at]).to be_empty
   end
 
+  it "can bet a decimal amount" do
+    subject.amount = "12.50"
+    expect(subject.amount).to eq BigDecimal("12.50")
+  end
+
   it "validates that its amount is greater than or equal to the minimum_wager_amount for the table" do
     expect(subject).to receive(:minimum_amount).and_return(100)
     subject.amount = 99

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :round do
     association :table, strategy: :build
-    initial_betting_closed_at "2015-09-10 12:43:05"
+    initial_betting_closed_at Time.now + 30.seconds
   end
 end
