@@ -14,6 +14,15 @@ RSpec.describe Wager do
     expect(subject.errors[:hand]).to include "can't be blank"
   end
 
+  it "creates a financial transaction before create" do
+    subject = FactoryGirl.build(:wager)
+    subject.valid?
+    transaction = subject.financial_transaction
+    expect(transaction.amount).to eq -1 * subject.amount
+    expect(transaction.player).to eq subject.player
+    expect(subject.errors[:transaction]).to be_empty
+  end
+
   it "validates the presence of a player" do
     subject.player = nil
     subject.valid?

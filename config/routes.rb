@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     jsonapi_resources :users
     jsonapi_resources :players
     jsonapi_resources :wagers
+    jsonapi_resources :transactions
   end
 
 end

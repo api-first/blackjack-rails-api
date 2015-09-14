@@ -5,9 +5,13 @@ class Wager < ActiveRecord::Base
 
   belongs_to :player
 
+  has_one :financial_transaction, class_name: "Transaction", as: :action, validate: true
+
   validates :hand, presence: true
 
   validates :player, presence: true
+
+  before_validation :build_matching_financial_transaction
 
   def minimum_amount
     return Float::INFINITY unless hand && hand.round && hand.round.table && hand.round.table.table_rule_set
@@ -30,5 +34,11 @@ class Wager < ActiveRecord::Base
 
   def _wager_at
     Time.now
+  end
+
+  def build_matching_financial_transaction
+    return unless amount && player
+
+    build_financial_transaction(amount: (-1 * amount), player: player, kind: :wager, action: self)
   end
 end
