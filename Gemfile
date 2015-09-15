@@ -10,9 +10,6 @@ gem 'pg'
 # framework for creating json api compliant server
 gem "jsonapi-resources", github: "cerebris/jsonapi-resources", branch: "master"
 
-# use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 # web server
 gem 'puma'
 
