@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: redirect("/v1/docs")
+
   use_doorkeeper
   namespace :v1 do
     jsonapi_resources :suits, only: [:index, :show, :options]
