@@ -6,10 +6,11 @@ module V1
 
     class << self
       def creatable_fields(context)
-        [
-          :username,
-          :password
-        ]
+        fields = [:username, :password]
+        if context && context[:current_user] && context[:current_user].pit_boss?
+          fields += [:pit_boss]
+        end
+        fields
       end
 
       alias_method :updatable_fields, :creatable_fields

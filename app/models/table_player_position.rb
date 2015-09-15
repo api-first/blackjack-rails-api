@@ -76,11 +76,11 @@ class TablePlayerPosition < ActiveRecord::Base
   end
 
   def _create_join_event
-    TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("join"))
+    TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("join"), created_at: created_at, updated_at: updated_at)
   end
 
   def _create_leave_event
-    TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("leave"))
+    TablePlayerPositionEvent.create!(table: table, player: player, position: position, event: TablePlayerPositionEvent.events.fetch("leave"), created_at: created_at, updated_at: updated_at)
   end
 
   def _notify_table_player_joined

@@ -21,6 +21,8 @@ gem "bcrypt"
 
 gem "doorkeeper"
 
+gem "pundit"
+
 # row sorting
 gem "ranked-model", "~> 0.4.0"
 

@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/cerebris/jsonapi-resources.git
-  revision: d3dff6f52009ab9422e3d154e867a7276a2a0ef8
+  revision: fa97256edf86f4d294b4ec46955607a7d4b4b098
   branch: master
   specs:
-    jsonapi-resources (0.5.2)
+    jsonapi-resources (0.5.9)
       rails (>= 4.0)
 
 GEM
@@ -48,39 +48,39 @@ GEM
       kramdown
       railties
       rspec_api_documentation
-    arel (6.0.2)
+    arel (6.0.3)
     bcrypt (3.1.10)
     builder (3.2.2)
-    byebug (5.0.0)
-      columnize (= 0.9.0)
-    columnize (0.9.0)
+    byebug (6.0.2)
     database_cleaner (1.4.1)
     diff-lcs (1.2.5)
-    doorkeeper (2.0.1)
-      railties (>= 3.1)
+    doorkeeper (3.0.0)
+      railties (>= 3.2)
     erubis (2.7.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    globalid (0.3.5)
+    globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     json (1.8.3)
     kramdown (1.8.0)
-    loofah (2.0.2)
+    loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mime-types (2.6.1)
+    mime-types (2.6.2)
     mini_portile (0.6.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     mustache (0.99.8)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    pg (0.18.2)
-    puma (2.12.2)
+    pg (0.18.3)
+    puma (2.13.4)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -97,7 +97,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.6)
+    rails-dom-testing (1.0.7)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -142,12 +142,12 @@ GEM
       json (~> 1.4, >= 1.4.6)
       mustache (~> 0.99, >= 0.99.4)
       rspec (>= 3.0.0)
-    spring (1.3.6)
+    spring (1.4.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.2.0)
+    sprockets (3.3.4)
       rack (~> 1.0)
-    sprockets-rails (2.3.2)
+    sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -171,6 +171,7 @@ DEPENDENCIES
   jsonapi-resources!
   pg
   puma
+  pundit
   rails (= 4.2.3)
   rails_12factor
   ranked-model (~> 0.4.0)

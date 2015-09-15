@@ -22,6 +22,7 @@ module BlackjackRailsApi
     # -- all .rb files in that directory are automatically loaded.
 
     config.autoload_paths << "#{config.root}/app/resources/concerns"
+    config.autoload_paths << "#{config.root}/app/policies/concerns"
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

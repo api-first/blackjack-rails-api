@@ -10,6 +10,11 @@ RSpec.describe User do
     expect(subject.errors[:username]).to include "can't be blank"
   end
 
+  it "has the pit_boss attribute" do
+    subject.pit_boss = true
+    expect(subject).to be_pit_boss
+  end
+
   it "creates with a password and can authenticate" do
     user = FactoryGirl.create(:user, username: "sean", password: "drowssap")
     expect(user.authenticate("drowssap")).to eq user
