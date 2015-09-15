@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Cards", :authenticated do
+RSpec.resource "Cards", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   get "/v1/cards/:id" do

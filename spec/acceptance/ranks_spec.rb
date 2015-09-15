@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Ranks", :authenticated do
+RSpec.resource "Ranks", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   get "/v1/ranks/:id" do

@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "TablePlayerPositions", :authenticated do
+RSpec.resource "TablePlayerPositions", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/table-player-positions" do

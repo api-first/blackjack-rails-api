@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Tables", :authenticated do
+RSpec.resource "Tables", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/tables" do

@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Users", :authenticated do
+RSpec.resource "Users", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/users" do

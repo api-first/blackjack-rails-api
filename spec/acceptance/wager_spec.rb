@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Wagers", :authenticated do
+RSpec.resource "Wagers", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/wagers" do

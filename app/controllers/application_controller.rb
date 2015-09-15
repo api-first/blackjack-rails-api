@@ -1,4 +1,6 @@
 class ApplicationController < JSONAPI::ResourceController
+  include PolicyAuthorization
+  
   after_action :_skip_session
 
   protect_from_forgery with: :null_session

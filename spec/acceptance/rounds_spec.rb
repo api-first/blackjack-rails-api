@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Rounds", :authenticated do
+RSpec.resource "Rounds", :authenticated, :authorized do
   header "Content-Type", "application/vnd.api+json"
 
   get "/v1/rounds/:id" do

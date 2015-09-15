@@ -1,4 +1,10 @@
 namespace :seed do
+  task :pit_boss, [:username, :password] => :environment do |task, args|
+    username, password = args[:username], args[:password]
+
+    User.create!(username: username, password: password, pit_boss: true)
+  end
+
   task suits: :environment do
     [
       ["S", "spades", "black"],

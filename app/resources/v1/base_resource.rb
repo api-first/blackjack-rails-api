@@ -1,5 +1,6 @@
 module V1
   class BaseResource < JSONAPI::Resource
+    include ResourcePolicyAuthorization
     abstract
 
     attribute :created_at

@@ -1,6 +1,6 @@
 require "api_documentation_helper"
 
-RSpec.resource "Players", :authenticated do
+RSpec.resource "Players", :authenticated, :authorized do  
   header "Content-Type", "application/vnd.api+json"
 
   post "/v1/players" do
@@ -16,7 +16,7 @@ RSpec.resource "Players", :authenticated do
       The related user.
     DESC
 
-    let :user_id do
+    let! :user_id do
       FactoryGirl.create(:user).id.to_s
     end
 
