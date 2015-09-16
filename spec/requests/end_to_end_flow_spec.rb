@@ -9,7 +9,7 @@ RSpec.describe "end-to-end flow" do
     expect(pit_boss_id).not_to be_nil
 
     # create a token for the pit boss user
-    post "/oauth/token", { "grant_type" => "password", "username" => pit_boss_username, password: pit_boss_password }
+    post "/oauth/token", { "grant_type" => "password", "username" => pit_boss_username, "password" => pit_boss_password }
     expect(response.status).to eq 200
     pit_boss_access_token = JSON.parse(response.body)["access_token"]
     expect(pit_boss_access_token).not_to be_blank
