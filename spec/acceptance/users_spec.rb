@@ -49,6 +49,13 @@ RSpec.resource "Users", :authenticated, :authorized do
     end
   end
 
+  get "/v1/users/me" do
+    example_request "GET /v1/users/me" do
+      explanation "Information about the authorized user."
+      expect(JSON.parse(response_body)["data"]["id"]).to eq @user.id.to_s
+    end
+  end
+
   get "/v1/users" do
     example_request "GET /v1/users" do
       expect(status).to eq 200
