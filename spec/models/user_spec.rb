@@ -24,4 +24,17 @@ RSpec.describe User do
   it "has many players" do
     expect(subject.players.new).to be_a Player
   end
+
+  it "validates the uniqueness of username" do
+    original = FactoryGirl.create(:user)
+    duplicate = FactoryGirl.build(:user, username: original.username)
+    duplicate.valid?
+    expect(duplicate.errors[:username]).to include "has already been taken"
+  end
+
+  it "has a unique index on username in the database" do
+    original = FactoryGirl.create(:user, username: "foo")
+    duplicate = FactoryGirl.create(:user, username: "bar")
+    expect{duplicate.update_column(:username, original.username)}.to raise_error ActiveRecord::RecordNotUnique
+  end
 end

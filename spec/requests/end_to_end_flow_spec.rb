@@ -232,7 +232,7 @@ RSpec.describe "end-to-end flow" do
       }
     )
     wager_id = JSON.parse(response.body)["data"]["id"]
-
+    expect(wager_id).not_to be_nil
   end
 
 end

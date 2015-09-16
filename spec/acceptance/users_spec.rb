@@ -13,7 +13,7 @@ RSpec.resource "Users", :authenticated, :authorized do
     end
 
     parameter "username", <<-DESC, required: true, scope: :attributes
-      The unique identifier for the user.
+      The **unique** identifier for the user.
     DESC
 
     let "username" do
