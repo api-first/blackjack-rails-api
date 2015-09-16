@@ -2,7 +2,10 @@ module V1
   class UserResource < BaseResource
 
     attribute :username
+
     attribute :password
+
+    attribute :pit_boss
 
     class << self
       def creatable_fields(context)

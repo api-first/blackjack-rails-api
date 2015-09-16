@@ -17,7 +17,7 @@ module V1
     end
 
     it "can fetch the correct fields" do
-      expect(described_class.new(Table.new).fetchable_fields.sort).to eq (creatable_and_updatable_fields + [:id, :created_at, :updated_at] - [:password]).sort
+      expect(described_class.new(Table.new).fetchable_fields.sort).to eq (creatable_and_updatable_fields + [:id, :created_at, :updated_at, :pit_boss] - [:password]).sort
     end
 
     context "when the current user is a pit_boss" do
