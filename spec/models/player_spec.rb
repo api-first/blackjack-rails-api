@@ -53,4 +53,34 @@ RSpec.describe Player do
     expect(subject.name).not_to be_blank
   end
 
+  it "has a wins attribute" do
+    subject.wins = 3
+    expect(subject.wins).to eq 3
+  end
+
+  it "initializes with wins" do
+    expect(subject.wins).not_to be_blank
+  end
+
+  it "has a losses attribute" do
+    subject.losses = 3
+    expect(subject.losses).to eq 3
+  end
+
+  it "initializes with losses" do
+    expect(subject.losses).not_to be_blank
+  end
+
+  it "calculates win percent" do
+    subject.wins = 8
+    subject.losses = 8
+    expect(subject.win_percentage).to eq 50
+    subject.wins = 4
+    subject.losses = 0
+    expect(subject.win_percentage).to eq 100
+    subject.wins = 0
+    subject.losses = 8
+    expect(subject.win_percentage).to eq 0
+  end
+
 end

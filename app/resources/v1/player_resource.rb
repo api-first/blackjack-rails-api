@@ -2,6 +2,8 @@ module V1
   class PlayerResource < BaseResource
 
     attribute :name
+    attribute :wins
+    attribute :losses
 
     has_one :user
 
@@ -11,7 +13,9 @@ module V1
       def creatable_fields(context)
         [
           :user,
-          :name
+          :name,
+          :wins,
+          :losses
         ]
       end
 
