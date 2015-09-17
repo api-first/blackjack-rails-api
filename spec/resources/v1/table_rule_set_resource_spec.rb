@@ -33,8 +33,7 @@ module V1
         :dealer_wins_ties,
         :round_initial_betting_window_seconds,
         :minimum_wager_amount,
-        :minimum_players_per_round,
-        :maximum_wager_amount
+        :minimum_players_per_round
       ].sort
     end
 
@@ -47,7 +46,7 @@ module V1
     end
 
     it "can fetch the correct fields" do
-      expect(described_class.new(TableRuleSet.new).fetchable_fields.sort).to eq (creatable_and_updatable_fields + [:id, :created_at, :updated_at]).sort
+      expect(described_class.new(TableRuleSet.new).fetchable_fields.sort).to eq (creatable_and_updatable_fields + [:id, :created_at, :updated_at, :maximum_wager_amount]).sort
     end
 
   end
