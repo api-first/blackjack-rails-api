@@ -24,6 +24,15 @@ RSpec.describe PlayerPolicy do
     it "can destroy the player" do
       expect(subject.destroy?).to eq true
     end
+    # TODO: How would we implement this?
+    #it "cannot update wins" do
+      #subject.wins = 1
+      #expect(subject.update?).to eq false
+    #end
+    #it "cannot update losses" do
+      #subject.losses = 1
+      #expect(subject.update?).to eq false
+    #end
     it "has the player in scope" do
       expect(subject.scope).to include record
     end

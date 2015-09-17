@@ -4,7 +4,9 @@ module V1
     let :creatable_and_updatable_fields do
       [
         :user,
-        :name
+        :name,
+        :wins,
+        :losses
       ].sort
     end
 

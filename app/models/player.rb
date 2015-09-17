@@ -19,5 +19,13 @@ class Player < ActiveRecord::Base
   def _credit_account
     transactions.create(kind: "credit", amount: 1000)
   end
+  
+  def  win_percentage
+    if (wins + losses) == 0
+      0
+    else
+      100*wins/(wins+losses)
+    end
+  end
 
 end
