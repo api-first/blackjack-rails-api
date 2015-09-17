@@ -3,5 +3,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
 
+  validates :birth_date, presence: true
+
   has_many :players
 end

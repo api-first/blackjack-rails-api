@@ -28,6 +28,10 @@ RSpec.resource "Users", :authenticated, :authorized do
       "drowssap"
     end
 
+    parameter 'birth_date', <<-DESC, required: true, scope: :attributes
+      Date of birth.
+    DESC
+
     let 'birth_date' do
       Date.new(1975,3,5)
     end
