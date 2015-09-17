@@ -94,7 +94,7 @@ RSpec.resource "Players", :authenticated, :authorized do
       expect(JSON.parse(response_body)["data"].size).to eq 10
     end
 
-    example "GET /v1/players?page=6" do
+    example "GET /v1/players?page=6", document: false do
       FactoryGirl.create_list(:player, 55)
       do_request({ page: "6" })
       expect(status).to eq 200
