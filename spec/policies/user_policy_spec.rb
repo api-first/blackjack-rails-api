@@ -31,11 +31,11 @@ RSpec.describe UserPolicy do
 
   context "when the user is a pit_boss" do
     let :user do
-      FactoryGirl.create(:user, pit_boss: true)
+      FactoryGirl.create(:user, pit_boss: true, username: "pitboss")
     end
 
     let :record do
-      FactoryGirl.create(:user)
+      FactoryGirl.create(:user, username: "gambler")
     end
 
     it "can be shown" do
@@ -57,11 +57,11 @@ RSpec.describe UserPolicy do
 
   context "when the user is not a pit boss and isn't the record" do
     let :record do
-      FactoryGirl.create(:user)
+      FactoryGirl.create(:user, username: "gambler")
     end
 
     let :user do
-      FactoryGirl.create(:user, pit_boss: false)
+      FactoryGirl.create(:user, username: "bossman", pit_boss: false)
     end
 
     it "cannot be shown" do
