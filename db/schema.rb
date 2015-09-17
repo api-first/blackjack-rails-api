@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917151639) do
+ActiveRecord::Schema.define(version: 20150917210247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channels", force: :cascade do |t|
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0
+    t.string   "name"
+    t.string   "description"
+  end
 
   create_table "hand_cards", force: :cascade do |t|
     t.integer  "hand_id",                   null: false
@@ -36,6 +44,18 @@ ActiveRecord::Schema.define(version: 20150917151639) do
   end
 
   add_index "hands", ["round_id"], name: "index_hands_on_round_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "channel_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body",        null: false
+  end
+
+  add_index "messages", ["author_type", "author_id"], name: "index_messages_on_author_type_and_author_id", using: :btree
+  add_index "messages", ["channel_id"], name: "index_messages_on_channel_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -211,6 +231,7 @@ ActiveRecord::Schema.define(version: 20150917151639) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "pit_boss",        default: false, null: false
+    t.date     "birth_date"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
@@ -229,6 +250,7 @@ ActiveRecord::Schema.define(version: 20150917151639) do
 
   add_foreign_key "hand_cards", "hands"
   add_foreign_key "hands", "rounds"
+  add_foreign_key "messages", "channels"
   add_foreign_key "players", "users"
   add_foreign_key "rounds", "tables"
   add_foreign_key "table_player_position_events", "players"
