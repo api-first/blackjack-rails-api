@@ -10,7 +10,7 @@ RSpec.resource "OAuth Tokens" do
     end
 
     let! :user do
-      FactoryGirl.create(:user, username: username, password: password)
+      FactoryGirl.create(:user, username: username, password: password, email: email)
     end
 
     parameter "grant_type", <<-DESC, required: true
@@ -21,12 +21,20 @@ RSpec.resource "OAuth Tokens" do
       "password"
     end
 
-    parameter "username", <<-DESC, required: true
+    parameter "username", <<-DESC
       The username of the user.
     DESC
 
     let "username" do
       "sean"
+    end
+
+    parameter "email", <<-DESC
+      The email of the user.
+    DESC
+
+    let "email" do
+      "david@example.com"
     end
 
     parameter "password", <<-DESC, required: true

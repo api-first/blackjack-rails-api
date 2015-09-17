@@ -20,6 +20,14 @@ RSpec.resource "Users", :authenticated, :authorized do
       "sean"
     end
 
+    parameter "email", <<-DESC, scope: :attributes
+      The **unique** (if provided) email address for the user.
+    DESC
+
+    let "email" do
+      "david@example.com"
+    end
+
     parameter "password", <<-DESC, required: true, scope: :attributes
       The password with which the user with authenticate.
     DESC
@@ -90,6 +98,14 @@ RSpec.resource "Users", :authenticated, :authorized do
 
     let "username" do
       "seand"
+    end
+
+    parameter "email", <<-DESC, scope: :attributes
+      The **unique** (if provided) email address for the user.
+    DESC
+
+    let "email" do
+      "david@example.com"
     end
 
     parameter "password", <<-DESC, scope: :attributes

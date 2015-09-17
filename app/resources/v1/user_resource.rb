@@ -3,13 +3,15 @@ module V1
 
     attribute :username
 
+    attribute :email
+
     attribute :password
 
     attribute :pit_boss
 
     class << self
       def creatable_fields(context)
-        fields = [:username, :password]
+        fields = [:username, :email, :password]
         if context && context[:current_user] && context[:current_user].pit_boss?
           fields += [:pit_boss]
         end

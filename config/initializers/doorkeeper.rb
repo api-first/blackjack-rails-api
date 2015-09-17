@@ -2,8 +2,13 @@ Doorkeeper.configure do
   orm :active_record
 
   resource_owner_from_credentials do
+    query = if params[:email].present?
+              { email: params[:email] }
+            else
+              { username: params[:username] }
+            end
     current_user ||= begin
-      user = User.find_by(username: params[:username])
+      user = User.find_by(query)
       user && user.authenticate(params[:password])
     end
   end

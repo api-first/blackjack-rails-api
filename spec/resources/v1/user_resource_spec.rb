@@ -4,7 +4,8 @@ module V1
     let :creatable_and_updatable_fields do
       [
         :username,
-        :password
+        :password,
+        :email
       ].sort
     end
 
