@@ -23,6 +23,8 @@ gem "pundit"
 # row sorting
 gem "ranked-model", "~> 0.4.0"
 
+gem "rack-cors", ">= 0.4.0", require: "rack/cors"
+
 group :development, :test do
   # `byebug` anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

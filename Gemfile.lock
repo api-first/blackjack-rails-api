@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cerebris/jsonapi-resources.git
-  revision: fa97256edf86f4d294b4ec46955607a7d4b4b098
+  revision: d4c3cfd1aee6149013b816c888b19e2dc6b5298e
   branch: master
   specs:
     jsonapi-resources (0.5.9)
@@ -82,6 +82,7 @@ GEM
     pundit (1.0.1)
       activesupport (>= 3.0.0)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.3)
@@ -172,6 +173,7 @@ DEPENDENCIES
   pg
   puma
   pundit
+  rack-cors (>= 0.4.0)
   rails (= 4.2.3)
   rails_12factor
   ranked-model (~> 0.4.0)
