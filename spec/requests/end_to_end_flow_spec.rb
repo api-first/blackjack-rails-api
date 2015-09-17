@@ -38,6 +38,9 @@ RSpec.describe "end-to-end flow" do
                 type: "users"
               }
             }
+          },
+          attributes: {
+            name: "Barney"
           }
         }
       }.to_json,

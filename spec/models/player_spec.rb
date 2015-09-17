@@ -44,4 +44,13 @@ RSpec.describe Player do
     expect(subject.balance).to eq initial_balance + 0
   end
 
+  it "has a name attribute" do
+    subject.name = "Barney"
+    expect(subject.name).to eq "Barney"
+  end
+
+  it "initializes with a name" do
+    expect(subject.name).not_to be_blank
+  end
+
 end
