@@ -87,6 +87,13 @@ RSpec.resource "Players", :authenticated, :authorized do
       expect(JSON.parse(response_body)["data"].size).to eq 0
     end
 
+    example_request "GET /v1/players" do
+      expect(status).to eq 200
+      expect(JSON.parse(response_body)["data"].size).to eq 1
+    end
+  end
+
+  get "/v1/players" do
     example "GET /v1/players?page=1" do
       FactoryGirl.create_list(:player, 10)
       do_request({ page: {number: "1", size: "5"} })
@@ -99,12 +106,7 @@ RSpec.resource "Players", :authenticated, :authorized do
       FactoryGirl.create_list(:player, 2)
       do_request({ page: {number: "2", size: 5} })
       expect(status).to eq 200
-      expect(JSON.parse(response_body)["data"].size).to eq 3
-    end
-
-    example_request "GET /v1/players" do
-      expect(status).to eq 200
-      expect(JSON.parse(response_body)["data"].size).to eq 1
+      expect(JSON.parse(response_body)["data"].size).to eq 2
     end
   end
 
