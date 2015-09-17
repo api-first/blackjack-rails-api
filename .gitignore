@@ -15,3 +15,8 @@
 spec/examples.txt
 /docs
 .DS_Store
+
+# Ignoring IntelliJ related stuff
+.idea
+*.iml
+
