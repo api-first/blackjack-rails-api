@@ -31,6 +31,7 @@ module V1
       :dealer_wins_ties,
       :round_initial_betting_window_seconds,
       :minimum_wager_amount,
+      :maximum_wager_amount,
       :minimum_players_per_round,
     )
 

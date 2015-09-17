@@ -404,4 +404,10 @@ RSpec.describe TableRuleSet do
     subject.minimum_players_per_round = 1
     expect(subject.minimum_players_per_round).to eq 1
   end
+
+  it "has a maximum_wager_amount attribute" do 
+    subject.minimum_wager_amount = 10
+    expect(subject.maximum_wager_amount).to eq (10 * subject.minimum_wager_amount)
+  end
+   
 end

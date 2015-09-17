@@ -305,6 +305,7 @@ RSpec.resource "TableRuleSets", :authenticated, :authorized do
       expect(parsed["data"]["attributes"]["may-hit-split-aces"]).to eq table_rule_set.may_hit_split_aces
       expect(parsed["data"]["attributes"]["player-must-stand-on-soft-21"]).to eq table_rule_set.player_must_stand_on_soft_21
       expect(parsed["data"]["attributes"]["restrict-doubling-to-hard-totals"]).to eq table_rule_set.restrict_doubling_to_hard_totals
+      expect(parsed["data"]["attributes"]["maximum-wager-amount"]).to eq table_rule_set.maximum_wager_amount
     end
   end
 
