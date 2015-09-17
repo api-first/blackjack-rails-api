@@ -55,7 +55,7 @@ RSpec.describe Wager do
   end
 
   it "validates that its amount is greater than or equal to the minimum_wager_amount for the table" do
-    expect(subject).to receive(:minimum_amount).and_return(100)
+    expect(subject).to receive(:minimum_amount).exactly(2).times.and_return(100)
     subject.amount = 99
     subject.valid?
     expect(subject.errors[:amount]).to include "must be greater than or equal to 100"
@@ -76,10 +76,11 @@ RSpec.describe Wager do
   end
 
   it "validates that its amount is less than or equal to the maximum_wager_amount for the table" do
-    expect(subject).to receive(:minimum_amount).and_return(100)
+    allow(subject).to receive(:minimum_amount).and_return(100)
     subject.amount = 1001
+
     subject.valid?
-    expect(subject.errors[:amount]).to include "must be less than or equal to 1001"
+    expect(subject.errors[:amount]).to include "must be less than or equal to 1000"
   end
 
 end

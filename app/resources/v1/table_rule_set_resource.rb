@@ -33,6 +33,7 @@ module V1
       :minimum_wager_amount,
       :maximum_wager_amount,
       :minimum_players_per_round,
+      :maximum_wager_amount
     )
 
     class << self
@@ -69,6 +70,7 @@ module V1
           :round_initial_betting_window_seconds,
           :minimum_wager_amount,
           :minimum_players_per_round,
+          :maximum_wager_amount
         ]
       end
 
