@@ -7,6 +7,8 @@ module V1
 
     filter :name
 
+    paginator :paged
+
     class << self
       def creatable_fields(context)
         [
