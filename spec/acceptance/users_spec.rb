@@ -28,6 +28,10 @@ RSpec.resource "Users", :authenticated, :authorized do
       "drowssap"
     end
 
+    let 'birth_date' do
+      Date.new(1975,3,5)
+    end
+
     example_request "POST /v1/users" do
       expect(status).to eq 201
       parsed = JSON.parse(response_body)

@@ -10,6 +10,12 @@ RSpec.describe User do
     expect(subject.errors[:username]).to include "can't be blank"
   end
 
+  it 'has a birth date attribute' do
+    birth_date = Date.new(1975,03,05)
+    subject.birth_date = birth_date
+    expect(subject.birth_date).to eq birth_date
+  end
+
   it "has the pit_boss attribute" do
     subject.pit_boss = true
     expect(subject).to be_pit_boss
