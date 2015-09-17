@@ -16,6 +16,7 @@ module V1
         :updated_at,
         :initial_betting_closed_at,
         :table,
+        :total_wagers,
         :active
       ]).sort
     end
