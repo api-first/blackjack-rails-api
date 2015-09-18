@@ -1,6 +1,8 @@
 module V1
   class UserResource < BaseResource
 
+    has_many :players
+
     attribute :username
 
     attribute :password
