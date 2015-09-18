@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917210247) do
+ActiveRecord::Schema.define(version: 20150918123120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channel_subscriptions", force: :cascade do |t|
+    t.integer  "channel_id"
+    t.integer  "subscriber_id"
+    t.string   "subscriber_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "channel_subscriptions", ["channel_id"], name: "index_channel_subscriptions_on_channel_id", using: :btree
+  add_index "channel_subscriptions", ["subscriber_id", "subscriber_type", "channel_id"], name: "idx_channel_unique_c_s", unique: true, using: :btree
+  add_index "channel_subscriptions", ["subscriber_id", "subscriber_type"], name: "idx_channel_sub_sub", using: :btree
 
   create_table "channels", force: :cascade do |t|
     t.datetime "created_at",              null: false
@@ -248,6 +260,7 @@ ActiveRecord::Schema.define(version: 20150917210247) do
   add_index "wagers", ["hand_id"], name: "index_wagers_on_hand_id", using: :btree
   add_index "wagers", ["player_id"], name: "index_wagers_on_player_id", using: :btree
 
+  add_foreign_key "channel_subscriptions", "channels"
   add_foreign_key "hand_cards", "hands"
   add_foreign_key "hands", "rounds"
   add_foreign_key "messages", "channels"
