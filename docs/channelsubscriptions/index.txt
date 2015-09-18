@@ -1,0 +1,59 @@
+GET /v1/channel-subscriptions/:id
+---------------------------------
+
+Parameters:
+  * id -       ID of the channel-subscription to be retrieved.
+
+
+Request:
+  GET /v1/channel-subscriptions/1
+  Authorization: Bearer 5c1c505e4ff93e0e16dde557e7f20d9522466d9e50be9f2caecdacd5847cbdc4
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"1","type":"channel-subscriptions","links":{"self":"http://example.org/v1/channel-subscriptions/1"},"attributes":{"created-at":"2015-09-18T20:11:53.458Z","updated-at":"2015-09-18T20:11:53.458Z"},"relationships":{"channel":{"links":{"self":"http://example.org/v1/channel-subscriptions/1/relationships/channel","related":"http://example.org/v1/channel-subscriptions/1/channel"},"data":{"type":"channels","id":"7"}},"subscriber":{"links":{"self":"http://example.org/v1/channel-subscriptions/1/relationships/subscriber","related":"http://example.org/v1/channel-subscriptions/1/subscriber"},"data":{"type":"players","id":"14"}}}}}
+
+
+GET /v1/channel-subscriptions
+-----------------------------
+
+Request:
+  GET /v1/channel-subscriptions
+  Authorization: Bearer 85cf7b863996867ec2a1f49b2c60a3eb186708714390dd432184c67bfc20ff84
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"2","type":"channel-subscriptions","links":{"self":"http://example.org/v1/channel-subscriptions/2"},"attributes":{"created-at":"2015-09-18T20:11:53.498Z","updated-at":"2015-09-18T20:11:53.498Z"},"relationships":{"channel":{"links":{"self":"http://example.org/v1/channel-subscriptions/2/relationships/channel","related":"http://example.org/v1/channel-subscriptions/2/channel"},"data":{"type":"channels","id":"8"}},"subscriber":{"links":{"self":"http://example.org/v1/channel-subscriptions/2/relationships/subscriber","related":"http://example.org/v1/channel-subscriptions/2/subscriber"},"data":{"type":"players","id":"15"}}}}]}
+
+
+POST /v1/channel-subscriptions
+------------------------------
+
+Parameters:
+  * type -       Must always be set to <code>channel-subscriptions</code>.
+
+  * channel -       The channel of the subscription.
+
+  * subscriber -       The subscriber to the channel. Polymorphic in case we want to have players or users.
+
+
+Request:
+  POST /v1/channel-subscriptions
+  Authorization: Bearer 3b6fd107ab3adefab85d730295cbc77bc2c3598a02a614b6c40e1c541901ba39
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"channel-subscriptions","relationships":{"channel":{"data":{"type":"channels","id":"9"}},"subscriber":{"data":{"type":"players","id":"16"}}}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"3","type":"channel-subscriptions","links":{"self":"http://example.org/v1/channel-subscriptions/3"},"attributes":{"created-at":"2015-09-18T20:11:53.543Z","updated-at":"2015-09-18T20:11:53.543Z"},"relationships":{"channel":{"links":{"self":"http://example.org/v1/channel-subscriptions/3/relationships/channel","related":"http://example.org/v1/channel-subscriptions/3/channel"},"data":{"type":"channels","id":"9"}},"subscriber":{"links":{"self":"http://example.org/v1/channel-subscriptions/3/relationships/subscriber","related":"http://example.org/v1/channel-subscriptions/3/subscriber"},"data":{"type":"players","id":"16"}}}}}
+
+

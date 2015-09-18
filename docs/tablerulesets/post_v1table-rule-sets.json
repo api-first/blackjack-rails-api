@@ -1,0 +1,193 @@
+{
+  "resource": "TableRuleSets",
+  "http_method": "POST",
+  "route": "/v1/table-rule-sets",
+  "description": "POST /v1/table-rule-sets",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": "      Must always be set to <code>table-rule-sets</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "name",
+      "description": "      The name of the rule set. This may be used to describe the type of game\n      being offered at a table.\n"
+    },
+    {
+      "required": true,
+      "scope": "attributes",
+      "name": "deck-count",
+      "description": "      The number of decks that will be used at the table.\n"
+    },
+    {
+      "required": true,
+      "scope": "attributes",
+      "name": "player-position-count",
+      "description": "      The number of playing positions at the table. Must be between 5 and 7.\n"
+    },
+    {
+      "required": true,
+      "scope": "attributes",
+      "name": "maximum-players-per-position",
+      "description": "      The maximum number of players that can play from an individual position on the table.\n"
+    },
+    {
+      "required": true,
+      "scope": "attributes",
+      "name": "maximum-bets-per-player",
+      "description": "      The maximum number of bets that a player can make at a table. This is\n      naturally limited by the number of positions, but could be lower.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "no-hole-card",
+      "description": "      If <code>true</code>, the dealer does not deal themselves a hole card during the initial deal.\n      Defaults to <code>false</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "original-bets-only",
+      "description": "      This boolean can only be set to true or false if <code>no-hole-card</code> is <code>true</code>.\n      When <code>original-bets-only</code> is true, if the player's hand loses to dealer blackjack, only the mandatory\n      initial bet is forfeited, and all optional bets (doubles and splits) are pushed.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "initial-player-card-face-up",
+      "description": "      This boolean indicates whether the initial card dealt to players is face up.\n      It defaults to <code>true</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "blackjack-pay-out",
+      "description": "      The amount that a winning blackjack hand pays out as a multiple of the original bet.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "standard-pay-out",
+      "description": "      The amount that a standard winning hand pays out as a multiple of the original bet.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "dealer-stands-at",
+      "description": "      The total at which the dealer must stand. Defaults to 17.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "dealer-draws-if-soft-stand-at",
+      "description": "      A boolean that if <code>true</code> requires the dealer to hit on the <code>dealer-stands-at</code>\n      total if the total is soft.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "surrender",
+      "description": "      An enum that indicates whether surrender is offered and if so, how.\n      Valid values include <code>not_allowed</code>, <code>early</code>, and <code>late</code>. Defaults to\n      <code>not_allowed</code>\".\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "surrender-percentage",
+      "description": "      A decimal that indicates the percentage of the original bet that is surrendered\n      when the player makes that choice. Must be <code>NULL</code> if <code>surrender</code> is <code>not_allowed</code>\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "insurance-available",
+      "description": "      A boolean that indicates whether insurance side bets are offered. Defaults to <code>true</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "insurance-pay-out",
+      "description": "      A decimal that is the multiple of the original bet that is paid if an insurance side bet is won.\n      Must be <code>NULL</code> if <code>insurance-available</code> is <code>false</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "dealer-match-available",
+      "description": "      A boolean that indicates whether dealer match side bets are offered. Defaults to <code>true</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "dealer-match-pay-out",
+      "description": "      A decimal that is the multiple of the original bet that is paid if a dealer match side bet is won.\n      Must be <code>NULL</code> if <code>dealer-match-available</code> is <code>false</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "double-down-minimum-percentage",
+      "description": "      A decimal that is the multiple of the original bet that is the minimum bet in \"double down\" situations.\n      Defaults to <code>1.0</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "double-down-maximum-percentage",
+      "description": "      A decimal that is the multiple of the original bet that is the maximum bet in \"double down\" situations.\n      Defaults to <code>1.0</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "split-identical-ranks-only",
+      "description": "      A boolean that indicates if a player can only split identical ranks (for example, 2 Jacks)\n      or if they can split as long as the value of the rank is the same.\n      Defaults to <code>false</code>\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "maximum-double-count-per-hand",
+      "description": "      An integer that indicates the maximum number of times that a player can double down per original hand.\n      Defaults to NULL (no maximum).\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "maximum-split-count-per-hand",
+      "description": "      An integer that indicates the maximum number of times that a player can split per original hand.\n      Defaults to NULL (no maximum).\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "may-hit-split-aces",
+      "description": "      A boolean that indicates if the player may hit, split, or double split aces. Defaults to <code>false</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "non-controlling-player-chooses-split-hand-to-bet-if-not-following",
+      "description": "      A boolean that indicates whether a player that does not choose to follow a split by the controlling player\n      is allowed to choose which of the split hands to bet. Defaults to <code>false</code> by default.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "player-must-stand-on-soft-21",
+      "description": "      A boolean that indicates if a player must stand on a soft 21. Defaults to <code>true</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "restrict-doubling-to-hard-totals",
+      "description": "      An array that includes the totals that can be doubled. Defaults to <code>NULL</code> (which means there are no restrictions).\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "dealer-wins-ties",
+      "description": "      A boolean that indicates if a dealer wins tied hands. Otherwise the hands push (nobody wins).\n      Defaults to <code>false</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "round-initial-betting-window-seconds",
+      "description": "      An integer that indicates the number of seconds that the initial betting window will\n      last for each round at the table.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "minimum-wager-amount",
+      "description": "      An integer that indicates the minimum initial wager amount.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/table-rule-sets",
+      "request_body": "{\"data\":{\"type\":\"table-rule-sets\",\"attributes\":{\"name\":\"Standard Casino\",\"deck-count\":6,\"player-position-count\":6,\"maximum-players-per-position\":3,\"maximum-bets-per-player\":6,\"no-hole-card\":false,\"original-bets-only\":null,\"initial-player-card-face-up\":true,\"blackjack-pay-out\":\"1.5\",\"standard-pay-out\":\"1.0\",\"dealer-stands-at\":17,\"dealer-draws-if-soft-stand-at\":false,\"surrender\":\"late\",\"surrender-percentage\":\"0.5\",\"insurance-available\":true,\"insurance-pay-out\":\"2.0\",\"dealer-match-available\":true,\"dealer-match-pay-out\":\"2.0\",\"double-down-minimum-percentage\":\"1.0\",\"double-down-maximum-percentage\":\"1.0\",\"split-identical-ranks-only\":false,\"maximum-double-count-per-hand\":null,\"maximum-split-count-per-hand\":null,\"may-hit-split-aces\":false,\"non-controlling-player-chooses-split-hand-to-bet-if-not-following\":false,\"player-must-stand-on-soft-21\":true,\"restrict-doubling-to-hard-totals\":null,\"dealer-wins-ties\":false,\"round-initial-betting-window-seconds\":30,\"minimum-wager-amount\":25}}}",
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 0e67643422359b67ea4bbf9051b5fb11dc961f6e0d672c21020dfd128f13702c"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\"data\":{\"id\":\"18\",\"type\":\"table-rule-sets\",\"links\":{\"self\":\"http://example.org/v1/table-rule-sets/18\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:54.123Z\",\"updated-at\":\"2015-09-18T20:11:54.123Z\",\"name\":\"Standard Casino\",\"deck-count\":6,\"player-position-count\":6,\"maximum-players-per-position\":3,\"maximum-bets-per-player\":6,\"no-hole-card\":false,\"original-bets-only\":null,\"initial-player-card-face-up\":true,\"blackjack-pay-out\":\"1.5\",\"standard-pay-out\":\"1.0\",\"dealer-stands-at\":17,\"dealer-draws-if-soft-stand-at\":false,\"surrender\":\"late\",\"surrender-percentage\":\"0.5\",\"insurance-available\":true,\"insurance-pay-out\":\"2.0\",\"dealer-match-available\":true,\"dealer-match-pay-out\":\"2.0\",\"double-down-minimum-percentage\":\"1.0\",\"double-down-maximum-percentage\":\"1.0\",\"split-identical-ranks-only\":false,\"maximum-double-count-per-hand\":null,\"maximum-split-count-per-hand\":null,\"may-hit-split-aces\":false,\"non-controlling-player-chooses-split-hand-to-bet-if-not-following\":false,\"player-must-stand-on-soft-21\":true,\"restrict-doubling-to-hard-totals\":null,\"dealer-wins-ties\":false,\"round-initial-betting-window-seconds\":30,\"minimum-wager-amount\":25,\"minimum-players-per-round\":1}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

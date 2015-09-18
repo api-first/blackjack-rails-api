@@ -1,0 +1,101 @@
+GET /v1/users
+-------------
+
+Request:
+  GET /v1/users
+  Authorization: Bearer 6563101b3f90e9aa463666fc21bc0f25903ccbe02c6b160ec286dd84f1745d4b
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"18","type":"users","links":{"self":"http://example.org/v1/users/18"},"attributes":{"created-at":"2015-09-18T20:11:52.906Z","updated-at":"2015-09-18T20:11:52.906Z","username":"sean-18","pit-boss":false},"relationships":{"players":{"links":{"self":"http://example.org/v1/users/18/relationships/players","related":"http://example.org/v1/users/18/players"}}}}]}
+
+
+GET /v1/users/:id
+-----------------
+
+Parameters:
+  * id -       ID of the user to be retrieved.
+
+
+Request:
+  GET /v1/users/19
+  Authorization: Bearer 5e28d5b2d3cb72af7d7463e4ed9b43ec758c1d94e63228ac2b8883b4fe859192
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"19","type":"users","links":{"self":"http://example.org/v1/users/19"},"attributes":{"created-at":"2015-09-18T20:11:52.930Z","updated-at":"2015-09-18T20:11:52.930Z","username":"sean-19","pit-boss":false},"relationships":{"players":{"links":{"self":"http://example.org/v1/users/19/relationships/players","related":"http://example.org/v1/users/19/players"}}}}}
+
+
+POST /v1/users
+--------------
+
+Parameters:
+  * type -       Must always be set to <code>users</code>.
+
+  * username -       The **unique** identifier for the user.
+
+  * password -       The password with which the user with authenticate.
+
+
+Request:
+  POST /v1/users
+  Authorization: Bearer 5111adb658a02732adc951e00888114da346bf13ecaee77a4bfcb51e9106a133
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"users","attributes":{"username":"sean","password":"drowssap"}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"21","type":"users","links":{"self":"http://example.org/v1/users/21"},"attributes":{"created-at":"2015-09-18T20:11:52.963Z","updated-at":"2015-09-18T20:11:52.963Z","username":"sean","pit-boss":false},"relationships":{"players":{"links":{"self":"http://example.org/v1/users/21/relationships/players","related":"http://example.org/v1/users/21/players"}}}}}
+
+
+PATCH /v1/users/:id
+-------------------
+
+Parameters:
+  * id -       ID of the user to be updated.
+
+  * type -       Must always be set to <code>users</code>.
+
+  * username -       The unique identifier for the user.
+
+  * password -       The password with which the user with authenticate.
+
+
+Request:
+  PATCH /v1/users/23
+  Authorization: Bearer 52bb0e14bfed02cd849e675e5bd558aceddd7538643f71cd9a2e419e3a85b9e5
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"23","type":"users","attributes":{"username":"seand","password":"!drowssap"}}}
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"23","type":"users","links":{"self":"http://example.org/v1/users/23"},"attributes":{"created-at":"2015-09-18T20:11:52.992Z","updated-at":"2015-09-18T20:11:53.005Z","username":"seand","pit-boss":false},"relationships":{"players":{"links":{"self":"http://example.org/v1/users/23/relationships/players","related":"http://example.org/v1/users/23/players"}}}}}
+
+
+GET /v1/users/me
+----------------
+
+Request:
+  GET /v1/users/me
+  Authorization: Bearer cd6e12b489b8e390627572372ef2c4b5a325fd2a348986d4dd17f3bcd6244516
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"24","type":"users","links":{"self":"http://example.org/v1/users/24"},"attributes":{"created-at":"2015-09-18T20:11:53.017Z","updated-at":"2015-09-18T20:11:53.017Z","username":"sean-23","pit-boss":false},"relationships":{"players":{"links":{"self":"http://example.org/v1/users/24/relationships/players","related":"http://example.org/v1/users/24/players"}}}}}
+
+

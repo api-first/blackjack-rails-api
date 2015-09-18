@@ -1,0 +1,39 @@
+{
+  "resource": "Suits",
+  "http_method": "GET",
+  "route": "/v1/suits/:id",
+  "description": "GET /v1/suits/:id",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "      ID of the suit to be retrieved.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/suits/S",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 84e038a2e21cfd659811e65bffbfd3d5cb77526ddd71362f84535b24331f355e"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"S\",\"type\":\"suits\",\"links\":{\"self\":\"http://example.org/v1/suits/S\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.270Z\",\"updated-at\":\"2015-09-18T20:11:52.270Z\",\"initial\":\"S\",\"color\":\"black\"}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

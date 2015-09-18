@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TableRuleSets API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TableRuleSets API</h1>
+
+      <div class="article">
+        <h2>POST /v1/table-rule-sets</h2>
+        <h3>POST /v1/table-rule-sets</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">type</span>
+                </td>
+                <td>
+                  <span class="description">      Must always be set to &lt;code&gt;table-rule-sets&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[name]</span>
+                </td>
+                <td>
+                  <span class="description">      The name of the rule set. This may be used to describe the type of game
+      being offered at a table.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">attributes[deck-count]</span>
+                </td>
+                <td>
+                  <span class="description">      The number of decks that will be used at the table.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">attributes[player-position-count]</span>
+                </td>
+                <td>
+                  <span class="description">      The number of playing positions at the table. Must be between 5 and 7.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">attributes[maximum-players-per-position]</span>
+                </td>
+                <td>
+                  <span class="description">      The maximum number of players that can play from an individual position on the table.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">attributes[maximum-bets-per-player]</span>
+                </td>
+                <td>
+                  <span class="description">      The maximum number of bets that a player can make at a table. This is
+      naturally limited by the number of positions, but could be lower.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[no-hole-card]</span>
+                </td>
+                <td>
+                  <span class="description">      If &lt;code&gt;true&lt;/code&gt;, the dealer does not deal themselves a hole card during the initial deal.
+      Defaults to &lt;code&gt;false&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[original-bets-only]</span>
+                </td>
+                <td>
+                  <span class="description">      This boolean can only be set to true or false if &lt;code&gt;no-hole-card&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;.
+      When &lt;code&gt;original-bets-only&lt;/code&gt; is true, if the player&#39;s hand loses to dealer blackjack, only the mandatory
+      initial bet is forfeited, and all optional bets (doubles and splits) are pushed.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[initial-player-card-face-up]</span>
+                </td>
+                <td>
+                  <span class="description">      This boolean indicates whether the initial card dealt to players is face up.
+      It defaults to &lt;code&gt;true&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[blackjack-pay-out]</span>
+                </td>
+                <td>
+                  <span class="description">      The amount that a winning blackjack hand pays out as a multiple of the original bet.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[standard-pay-out]</span>
+                </td>
+                <td>
+                  <span class="description">      The amount that a standard winning hand pays out as a multiple of the original bet.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[dealer-stands-at]</span>
+                </td>
+                <td>
+                  <span class="description">      The total at which the dealer must stand. Defaults to 17.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[dealer-draws-if-soft-stand-at]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that if &lt;code&gt;true&lt;/code&gt; requires the dealer to hit on the &lt;code&gt;dealer-stands-at&lt;/code&gt;
+      total if the total is soft.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[surrender]</span>
+                </td>
+                <td>
+                  <span class="description">      An enum that indicates whether surrender is offered and if so, how.
+      Valid values include &lt;code&gt;not_allowed&lt;/code&gt;, &lt;code&gt;early&lt;/code&gt;, and &lt;code&gt;late&lt;/code&gt;. Defaults to
+      &lt;code&gt;not_allowed&lt;/code&gt;&quot;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[surrender-percentage]</span>
+                </td>
+                <td>
+                  <span class="description">      A decimal that indicates the percentage of the original bet that is surrendered
+      when the player makes that choice. Must be &lt;code&gt;NULL&lt;/code&gt; if &lt;code&gt;surrender&lt;/code&gt; is &lt;code&gt;not_allowed&lt;/code&gt;
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[insurance-available]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates whether insurance side bets are offered. Defaults to &lt;code&gt;true&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[insurance-pay-out]</span>
+                </td>
+                <td>
+                  <span class="description">      A decimal that is the multiple of the original bet that is paid if an insurance side bet is won.
+      Must be &lt;code&gt;NULL&lt;/code&gt; if &lt;code&gt;insurance-available&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[dealer-match-available]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates whether dealer match side bets are offered. Defaults to &lt;code&gt;true&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[dealer-match-pay-out]</span>
+                </td>
+                <td>
+                  <span class="description">      A decimal that is the multiple of the original bet that is paid if a dealer match side bet is won.
+      Must be &lt;code&gt;NULL&lt;/code&gt; if &lt;code&gt;dealer-match-available&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[double-down-minimum-percentage]</span>
+                </td>
+                <td>
+                  <span class="description">      A decimal that is the multiple of the original bet that is the minimum bet in &quot;double down&quot; situations.
+      Defaults to &lt;code&gt;1.0&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[double-down-maximum-percentage]</span>
+                </td>
+                <td>
+                  <span class="description">      A decimal that is the multiple of the original bet that is the maximum bet in &quot;double down&quot; situations.
+      Defaults to &lt;code&gt;1.0&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[split-identical-ranks-only]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates if a player can only split identical ranks (for example, 2 Jacks)
+      or if they can split as long as the value of the rank is the same.
+      Defaults to &lt;code&gt;false&lt;/code&gt;
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[maximum-double-count-per-hand]</span>
+                </td>
+                <td>
+                  <span class="description">      An integer that indicates the maximum number of times that a player can double down per original hand.
+      Defaults to NULL (no maximum).
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[maximum-split-count-per-hand]</span>
+                </td>
+                <td>
+                  <span class="description">      An integer that indicates the maximum number of times that a player can split per original hand.
+      Defaults to NULL (no maximum).
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[may-hit-split-aces]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates if the player may hit, split, or double split aces. Defaults to &lt;code&gt;false&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[non-controlling-player-chooses-split-hand-to-bet-if-not-following]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates whether a player that does not choose to follow a split by the controlling player
+      is allowed to choose which of the split hands to bet. Defaults to &lt;code&gt;false&lt;/code&gt; by default.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[player-must-stand-on-soft-21]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates if a player must stand on a soft 21. Defaults to &lt;code&gt;true&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[restrict-doubling-to-hard-totals]</span>
+                </td>
+                <td>
+                  <span class="description">      An array that includes the totals that can be doubled. Defaults to &lt;code&gt;NULL&lt;/code&gt; (which means there are no restrictions).
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[dealer-wins-ties]</span>
+                </td>
+                <td>
+                  <span class="description">      A boolean that indicates if a dealer wins tied hands. Otherwise the hands push (nobody wins).
+      Defaults to &lt;code&gt;false&lt;/code&gt;.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[round-initial-betting-window-seconds]</span>
+                </td>
+                <td>
+                  <span class="description">      An integer that indicates the number of seconds that the initial betting window will
+      last for each round at the table.
+</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">attributes[minimum-wager-amount]</span>
+                </td>
+                <td>
+                  <span class="description">      An integer that indicates the minimum initial wager amount.
+</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Content-Type: application/vnd.api+json
+Authorization: Bearer 0e67643422359b67ea4bbf9051b5fb11dc961f6e0d672c21020dfd128f13702c</pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST /v1/table-rule-sets</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">{"data":{"type":"table-rule-sets","attributes":{"name":"Standard Casino","deck-count":6,"player-position-count":6,"maximum-players-per-position":3,"maximum-bets-per-player":6,"no-hole-card":false,"original-bets-only":null,"initial-player-card-face-up":true,"blackjack-pay-out":"1.5","standard-pay-out":"1.0","dealer-stands-at":17,"dealer-draws-if-soft-stand-at":false,"surrender":"late","surrender-percentage":"0.5","insurance-available":true,"insurance-pay-out":"2.0","dealer-match-available":true,"dealer-match-pay-out":"2.0","double-down-minimum-percentage":"1.0","double-down-maximum-percentage":"1.0","split-identical-ranks-only":false,"maximum-double-count-per-hand":null,"maximum-split-count-per-hand":null,"may-hit-split-aces":false,"non-controlling-player-chooses-split-hand-to-bet-if-not-following":false,"player-must-stand-on-soft-21":true,"restrict-doubling-to-hard-totals":null,"dealer-wins-ties":false,"round-initial-betting-window-seconds":30,"minimum-wager-amount":25}}}</pre>
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/vnd.api+json</pre>
+            <h4>Status</h4>
+            <pre class="response status">201 Created</pre>
+              <h4>Body</h4>
+              <pre class="response body">{&quot;data&quot;:{&quot;id&quot;:&quot;18&quot;,&quot;type&quot;:&quot;table-rule-sets&quot;,&quot;links&quot;:{&quot;self&quot;:&quot;http://example.org/v1/table-rule-sets/18&quot;},&quot;attributes&quot;:{&quot;created-at&quot;:&quot;2015-09-18T20:11:54.123Z&quot;,&quot;updated-at&quot;:&quot;2015-09-18T20:11:54.123Z&quot;,&quot;name&quot;:&quot;Standard Casino&quot;,&quot;deck-count&quot;:6,&quot;player-position-count&quot;:6,&quot;maximum-players-per-position&quot;:3,&quot;maximum-bets-per-player&quot;:6,&quot;no-hole-card&quot;:false,&quot;original-bets-only&quot;:null,&quot;initial-player-card-face-up&quot;:true,&quot;blackjack-pay-out&quot;:&quot;1.5&quot;,&quot;standard-pay-out&quot;:&quot;1.0&quot;,&quot;dealer-stands-at&quot;:17,&quot;dealer-draws-if-soft-stand-at&quot;:false,&quot;surrender&quot;:&quot;late&quot;,&quot;surrender-percentage&quot;:&quot;0.5&quot;,&quot;insurance-available&quot;:true,&quot;insurance-pay-out&quot;:&quot;2.0&quot;,&quot;dealer-match-available&quot;:true,&quot;dealer-match-pay-out&quot;:&quot;2.0&quot;,&quot;double-down-minimum-percentage&quot;:&quot;1.0&quot;,&quot;double-down-maximum-percentage&quot;:&quot;1.0&quot;,&quot;split-identical-ranks-only&quot;:false,&quot;maximum-double-count-per-hand&quot;:null,&quot;maximum-split-count-per-hand&quot;:null,&quot;may-hit-split-aces&quot;:false,&quot;non-controlling-player-chooses-split-hand-to-bet-if-not-following&quot;:false,&quot;player-must-stand-on-soft-21&quot;:true,&quot;restrict-doubling-to-hard-totals&quot;:null,&quot;dealer-wins-ties&quot;:false,&quot;round-initial-betting-window-seconds&quot;:30,&quot;minimum-wager-amount&quot;:25,&quot;minimum-players-per-round&quot;:1}}}</pre>
+      </div>
+    </div>
+  </body>
+</html>

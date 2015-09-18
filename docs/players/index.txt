@@ -1,0 +1,93 @@
+GET /v1/players/:id
+-------------------
+
+Parameters:
+  * id -       ID of the player to be retrieved.
+
+
+Request:
+  GET /v1/players/4
+  Authorization: Bearer 34c380db078cfe1337996bfc85f84c3d7fe91351853f131618631008be9d1569
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"4","type":"players","links":{"self":"http://example.org/v1/players/4"},"attributes":{"created-at":"2015-09-18T20:11:52.667Z","updated-at":"2015-09-18T20:11:52.667Z","name":"Barney"},"relationships":{"user":{"links":{"self":"http://example.org/v1/players/4/relationships/user","related":"http://example.org/v1/players/4/user"},"data":{"type":"users","id":"8"}}}}}
+
+
+GET /v1/players?filter[name]=
+-----------------------------
+
+Request:
+  GET /v1/players?filter[name]=barney
+  Authorization: Bearer 9708bdb6ce8a1a2ac5b0c86940e8dfaaccba41f1794fae1ea786bf6d8e658d49
+  Content-Type: application/vnd.api+json
+
+  filter={"name"=>"barney"}
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"5","type":"players","links":{"self":"http://example.org/v1/players/5"},"attributes":{"created-at":"2015-09-18T20:11:52.696Z","updated-at":"2015-09-18T20:11:52.696Z","name":"Barney"},"relationships":{"user":{"links":{"self":"http://example.org/v1/players/5/relationships/user","related":"http://example.org/v1/players/5/user"},"data":{"type":"users","id":"9"}}}}]}
+
+
+GET /v1/players
+---------------
+
+Request:
+  GET /v1/players
+  Authorization: Bearer 7cb35ca10792c3f6d71cde142a99868d5efcd32c4d06948284603526a38a9cd1
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"6","type":"players","links":{"self":"http://example.org/v1/players/6"},"attributes":{"created-at":"2015-09-18T20:11:52.720Z","updated-at":"2015-09-18T20:11:52.720Z","name":"Barney"},"relationships":{"user":{"links":{"self":"http://example.org/v1/players/6/relationships/user","related":"http://example.org/v1/players/6/user"},"data":{"type":"users","id":"10"}}}}]}
+
+
+GET /v1/players?sort=name
+-------------------------
+
+Request:
+  GET /v1/players?sort=name
+  Authorization: Bearer 7970ca8fb0fc54f11e95a01ff5a37c361ab089ef2ec41ca35537d94307227b16
+  Content-Type: application/vnd.api+json
+
+  sort=name
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"8","type":"players","links":{"self":"http://example.org/v1/players/8"},"attributes":{"created-at":"2015-09-18T20:11:52.748Z","updated-at":"2015-09-18T20:11:52.748Z","name":"Alison"},"relationships":{"user":{"links":{"self":"http://example.org/v1/players/8/relationships/user","related":"http://example.org/v1/players/8/user"},"data":{"type":"users","id":"11"}}}},{"id":"7","type":"players","links":{"self":"http://example.org/v1/players/7"},"attributes":{"created-at":"2015-09-18T20:11:52.744Z","updated-at":"2015-09-18T20:11:52.744Z","name":"Barney"},"relationships":{"user":{"links":{"self":"http://example.org/v1/players/7/relationships/user","related":"http://example.org/v1/players/7/user"},"data":{"type":"users","id":"11"}}}}]}
+
+
+POST /v1/players
+----------------
+
+Parameters:
+  * type -       Must always be set to <code>players</code>.
+
+  * user -       The related user.
+
+  * name -       The name of the player. Whatever you like!
+
+
+Request:
+  POST /v1/players
+  Authorization: Bearer 2edb5af830583dde2f20039540a41305c12fabb93d26c795b1fdbc7393acd712
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"players","relationships":{"user":{"data":{"id":"14","type":"users"}}},"attributes":{"name":"Barney"}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"10","type":"players","links":{"self":"http://example.org/v1/players/10"},"attributes":{"created-at":"2015-09-18T20:11:52.809Z","updated-at":"2015-09-18T20:11:52.809Z","name":"Barney"},"relationships":{"user":{"links":{"self":"http://example.org/v1/players/10/relationships/user","related":"http://example.org/v1/players/10/user"},"data":{"type":"users","id":"14"}}}}}
+
+

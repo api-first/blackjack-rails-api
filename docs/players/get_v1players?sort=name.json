@@ -1,0 +1,36 @@
+{
+  "resource": "Players",
+  "http_method": "GET",
+  "route": "/v1/players",
+  "description": "GET /v1/players?sort=name",
+  "explanation": "Players may be sorted by name.",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/players?sort=name",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 7970ca8fb0fc54f11e95a01ff5a37c361ab089ef2ec41ca35537d94307227b16"
+      },
+      "request_query_parameters": {
+        "sort": "name"
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"8\",\"type\":\"players\",\"links\":{\"self\":\"http://example.org/v1/players/8\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.748Z\",\"updated-at\":\"2015-09-18T20:11:52.748Z\",\"name\":\"Alison\"},\"relationships\":{\"user\":{\"links\":{\"self\":\"http://example.org/v1/players/8/relationships/user\",\"related\":\"http://example.org/v1/players/8/user\"},\"data\":{\"type\":\"users\",\"id\":\"11\"}}}},{\"id\":\"7\",\"type\":\"players\",\"links\":{\"self\":\"http://example.org/v1/players/7\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.744Z\",\"updated-at\":\"2015-09-18T20:11:52.744Z\",\"name\":\"Barney\"},\"relationships\":{\"user\":{\"links\":{\"self\":\"http://example.org/v1/players/7/relationships/user\",\"related\":\"http://example.org/v1/players/7/user\"},\"data\":{\"type\":\"users\",\"id\":\"11\"}}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

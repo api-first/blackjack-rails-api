@@ -1,0 +1,61 @@
+POST /v1/messages
+-----------------
+
+Parameters:
+  * type -       Must always be set to <code>messages</code>.
+
+  * channel -       The channel to which the message is being sent.
+
+  * author -       The author of the message. Can be player or a user.
+
+  * body -       The body of the message.
+
+
+Request:
+  POST /v1/messages
+  Authorization: Bearer 4655af82560e9a82b9e4942c6481504af9a3aaf73b0515d866d894144d700a9c
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"messages","relationships":{"channel":{"data":{"type":"channels","id":"4"}},"author":{"data":{"type":"players","id":"11"}}},"attributes":{"body":"HIYA!"}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"1","type":"messages","links":{"self":"http://example.org/v1/messages/1"},"attributes":{"created-at":"2015-09-18T20:11:53.241Z","updated-at":"2015-09-18T20:11:53.241Z","body":"HIYA!"},"relationships":{"channel":{"links":{"self":"http://example.org/v1/messages/1/relationships/channel","related":"http://example.org/v1/messages/1/channel"},"data":{"type":"channels","id":"4"}},"author":{"links":{"self":"http://example.org/v1/messages/1/relationships/author","related":"http://example.org/v1/messages/1/author"},"data":{"type":"players","id":"11"}}}}}
+
+
+GET /v1/messages
+----------------
+
+Request:
+  GET /v1/messages
+  Authorization: Bearer 3147c663ce0d4cbaa82af907ff6e55121e4078e4cec990c368da659e4d914490
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"2","type":"messages","links":{"self":"http://example.org/v1/messages/2"},"attributes":{"created-at":"2015-09-18T20:11:53.264Z","updated-at":"2015-09-18T20:11:53.264Z","body":"Hi!"},"relationships":{"channel":{"links":{"self":"http://example.org/v1/messages/2/relationships/channel","related":"http://example.org/v1/messages/2/channel"},"data":{"type":"channels","id":"5"}},"author":{"links":{"self":"http://example.org/v1/messages/2/relationships/author","related":"http://example.org/v1/messages/2/author"},"data":null}}}]}
+
+
+GET /v1/messages/:id
+--------------------
+
+Parameters:
+  * id -       ID of the message to be retrieved.
+
+
+Request:
+  GET /v1/messages/3
+  Authorization: Bearer b8b09aaa97f83e073c4deaac393ed3c9e3ca0ab7f384791eb7764e46e071733d
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"3","type":"messages","links":{"self":"http://example.org/v1/messages/3"},"attributes":{"created-at":"2015-09-18T20:11:53.290Z","updated-at":"2015-09-18T20:11:53.290Z","body":"Hi!"},"relationships":{"channel":{"links":{"self":"http://example.org/v1/messages/3/relationships/channel","related":"http://example.org/v1/messages/3/channel"},"data":{"type":"channels","id":"6"}},"author":{"links":{"self":"http://example.org/v1/messages/3/relationships/author","related":"http://example.org/v1/messages/3/author"},"data":null}}}}
+
+

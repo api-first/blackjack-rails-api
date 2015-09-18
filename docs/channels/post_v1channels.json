@@ -1,0 +1,54 @@
+{
+  "resource": "Channels",
+  "http_method": "POST",
+  "route": "/v1/channels",
+  "description": "POST /v1/channels",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": "      Must always be set to <code>channels</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "status",
+      "description": "      The status of the channel. Valid values are open,closed.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "name",
+      "description": "      The name of the channel.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "description",
+      "description": "      The description of the channel.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/channels",
+      "request_body": "{\"data\":{\"type\":\"channels\",\"attributes\":{\"status\":\"closed\",\"name\":\"Chitter Chatter\",\"description\":\"A very interesting discussion.\"}}}",
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 2217dc7a06f84ece7915232312b91479d11d07256443c42f9d57c863bd9464f2"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\"data\":{\"id\":\"1\",\"type\":\"channels\",\"links\":{\"self\":\"http://example.org/v1/channels/1\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.844Z\",\"updated-at\":\"2015-09-18T20:11:52.844Z\",\"name\":\"Chitter Chatter\",\"description\":\"A very interesting discussion.\",\"status\":\"closed\"},\"relationships\":{\"messages\":{\"links\":{\"self\":\"http://example.org/v1/channels/1/relationships/messages\",\"related\":\"http://example.org/v1/channels/1/messages\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

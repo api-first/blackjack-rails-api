@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API-First Blackjack API</title>
+  <meta charset="utf-8">
+  <style>
+    
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: &quot;required&quot;;
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>API-First Blackjack API</h1>
+
+  <div class="article">
+    <h2>Cards</h2>
+
+    <ul>
+      <li>
+        <a href="cards/get_v1cards.html">GET /v1/cards</a>
+      </li>
+      <li>
+        <a href="cards/get_v1cards:id.html">GET /v1/cards/:id</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>ChannelSubscriptions</h2>
+
+    <ul>
+      <li>
+        <a href="channelsubscriptions/get_v1channel-subscriptions.html">GET /v1/channel-subscriptions</a>
+      </li>
+      <li>
+        <a href="channelsubscriptions/get_v1channel-subscriptions:id.html">GET /v1/channel-subscriptions/:id</a>
+      </li>
+      <li>
+        <a href="channelsubscriptions/post_v1channel-subscriptions.html">POST /v1/channel-subscriptions</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Channels</h2>
+
+    <ul>
+      <li>
+        <a href="channels/get_v1channels.html">GET /v1/channels</a>
+      </li>
+      <li>
+        <a href="channels/get_v1channels:id.html">GET /v1/channels/:id</a>
+      </li>
+      <li>
+        <a href="channels/post_v1channels.html">POST /v1/channels</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Hands</h2>
+
+    <ul>
+      <li>
+        <a href="hands/get_v1hands.html">GET /v1/hands</a>
+      </li>
+      <li>
+        <a href="hands/get_v1hands:id.html">GET /v1/hands/:id</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Messages</h2>
+
+    <ul>
+      <li>
+        <a href="messages/get_v1messages.html">GET /v1/messages</a>
+      </li>
+      <li>
+        <a href="messages/get_v1messages:id.html">GET /v1/messages/:id</a>
+      </li>
+      <li>
+        <a href="messages/post_v1messages.html">POST /v1/messages</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>OAuth Tokens</h2>
+
+    <ul>
+      <li>
+        <a href="oauth_tokens/post_oauthtoken.html">POST /oauth/token</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Players</h2>
+
+    <ul>
+      <li>
+        <a href="players/get_v1players.html">GET /v1/players</a>
+      </li>
+      <li>
+        <a href="players/get_v1players:id.html">GET /v1/players/:id</a>
+      </li>
+      <li>
+        <a href="players/get_v1players?filter[name]=.html">GET /v1/players?filter[name]=</a>
+      </li>
+      <li>
+        <a href="players/get_v1players?sort=name.html">GET /v1/players?sort=name</a>
+      </li>
+      <li>
+        <a href="players/post_v1players.html">POST /v1/players</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Ranks</h2>
+
+    <ul>
+      <li>
+        <a href="ranks/get_v1ranks.html">GET /v1/ranks</a>
+      </li>
+      <li>
+        <a href="ranks/get_v1ranks:id.html">GET /v1/ranks/:id</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Rounds</h2>
+
+    <ul>
+      <li>
+        <a href="rounds/get_v1rounds.html">GET /v1/rounds</a>
+      </li>
+      <li>
+        <a href="rounds/get_v1rounds:id.html">GET /v1/rounds/:id</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Suits</h2>
+
+    <ul>
+      <li>
+        <a href="suits/get_v1suits.html">GET /v1/suits</a>
+      </li>
+      <li>
+        <a href="suits/get_v1suits:id.html">GET /v1/suits/:id</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>TablePlayerPositions</h2>
+
+    <ul>
+      <li>
+        <a href="tableplayerpositions/get_v1table-player-positions.html">GET /v1/table-player-positions</a>
+      </li>
+      <li>
+        <a href="tableplayerpositions/get_v1table-player-positions:id.html">GET /v1/table-player-positions/:id</a>
+      </li>
+      <li>
+        <a href="tableplayerpositions/post_v1table-player-positions.html">POST /v1/table-player-positions</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>TableRuleSets</h2>
+
+    <ul>
+      <li>
+        <a href="tablerulesets/get_v1table-rule-sets.html">GET /v1/table-rule-sets</a>
+      </li>
+      <li>
+        <a href="tablerulesets/get_v1table-rule-sets:id.html">GET /v1/table-rule-sets/:id</a>
+      </li>
+      <li>
+        <a href="tablerulesets/post_v1table-rule-sets.html">POST /v1/table-rule-sets</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Tables</h2>
+
+    <ul>
+      <li>
+        <a href="tables/get_v1tables.html">GET /v1/tables</a>
+      </li>
+      <li>
+        <a href="tables/get_v1tables:id.html">GET /v1/tables/:id</a>
+      </li>
+      <li>
+        <a href="tables/post_v1tables.html">POST /v1/tables</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Transactions</h2>
+
+    <ul>
+      <li>
+        <a href="transactions/get_v1transactions.html">GET /v1/transactions</a>
+      </li>
+      <li>
+        <a href="transactions/get_v1transactions:id.html">GET /v1/transactions/:id</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Users</h2>
+
+    <ul>
+      <li>
+        <a href="users/get_v1users.html">GET /v1/users</a>
+      </li>
+      <li>
+        <a href="users/get_v1users:id.html">GET /v1/users/:id</a>
+      </li>
+      <li>
+        <a href="users/get_v1usersme.html">GET /v1/users/me</a>
+      </li>
+      <li>
+        <a href="users/patch_v1users:id.html">PATCH /v1/users/:id</a>
+      </li>
+      <li>
+        <a href="users/post_v1users.html">POST /v1/users</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article">
+    <h2>Wagers</h2>
+
+    <ul>
+      <li>
+        <a href="wagers/get_v1wagers.html">GET /v1/wagers</a>
+      </li>
+      <li>
+        <a href="wagers/get_v1wagers:id.html">GET /v1/wagers/:id</a>
+      </li>
+      <li>
+        <a href="wagers/post_v1wagers.html">POST /v1/wagers</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

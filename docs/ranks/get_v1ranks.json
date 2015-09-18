@@ -1,0 +1,35 @@
+{
+  "resource": "Ranks",
+  "http_method": "GET",
+  "route": "/v1/ranks",
+  "description": "GET /v1/ranks",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/ranks",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 79a24b0cc0291cdc32ea0d35008cf3509f35edaed4355941480776fdeba9f55a"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"2\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/2\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.295Z\",\"updated-at\":\"2015-09-18T20:11:52.295Z\",\"initial\":\"2\",\"name\":\"2\",\"values\":[2],\"order\":0}},{\"id\":\"3\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/3\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.299Z\",\"updated-at\":\"2015-09-18T20:11:52.299Z\",\"initial\":\"3\",\"name\":\"3\",\"values\":[3],\"order\":1}},{\"id\":\"4\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/4\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.302Z\",\"updated-at\":\"2015-09-18T20:11:52.302Z\",\"initial\":\"4\",\"name\":\"4\",\"values\":[4],\"order\":2}},{\"id\":\"5\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/5\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.305Z\",\"updated-at\":\"2015-09-18T20:11:52.305Z\",\"initial\":\"5\",\"name\":\"5\",\"values\":[5],\"order\":3}},{\"id\":\"6\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/6\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.309Z\",\"updated-at\":\"2015-09-18T20:11:52.309Z\",\"initial\":\"6\",\"name\":\"6\",\"values\":[6],\"order\":4}},{\"id\":\"7\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/7\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.312Z\",\"updated-at\":\"2015-09-18T20:11:52.312Z\",\"initial\":\"7\",\"name\":\"7\",\"values\":[7],\"order\":5}},{\"id\":\"8\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/8\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.315Z\",\"updated-at\":\"2015-09-18T20:11:52.315Z\",\"initial\":\"8\",\"name\":\"8\",\"values\":[8],\"order\":6}},{\"id\":\"9\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/9\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.318Z\",\"updated-at\":\"2015-09-18T20:11:52.318Z\",\"initial\":\"9\",\"name\":\"9\",\"values\":[9],\"order\":7}},{\"id\":\"10\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/10\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.321Z\",\"updated-at\":\"2015-09-18T20:11:52.321Z\",\"initial\":\"10\",\"name\":\"10\",\"values\":[10],\"order\":8}},{\"id\":\"J\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/J\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.324Z\",\"updated-at\":\"2015-09-18T20:11:52.324Z\",\"initial\":\"J\",\"name\":\"Jack\",\"values\":[10],\"order\":9}},{\"id\":\"Q\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/Q\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.327Z\",\"updated-at\":\"2015-09-18T20:11:52.327Z\",\"initial\":\"Q\",\"name\":\"Queen\",\"values\":[10],\"order\":10}},{\"id\":\"K\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/K\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.330Z\",\"updated-at\":\"2015-09-18T20:11:52.330Z\",\"initial\":\"K\",\"name\":\"King\",\"values\":[10],\"order\":11}},{\"id\":\"A\",\"type\":\"ranks\",\"links\":{\"self\":\"http://example.org/v1/ranks/A\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.332Z\",\"updated-at\":\"2015-09-18T20:11:52.332Z\",\"initial\":\"A\",\"name\":\"Ace\",\"values\":[1,11],\"order\":12}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

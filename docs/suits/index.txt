@@ -1,0 +1,34 @@
+GET /v1/suits
+-------------
+
+Request:
+  GET /v1/suits
+  Authorization: Bearer 262e2f8249718fa2425ebc271385bc4859f6ae7811c94bce290b9f02b404b9d7
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"C","type":"suits","links":{"self":"http://example.org/v1/suits/C"},"attributes":{"created-at":"2015-09-18T20:11:52.274Z","updated-at":"2015-09-18T20:11:52.274Z","initial":"C","color":"black"}},{"id":"D","type":"suits","links":{"self":"http://example.org/v1/suits/D"},"attributes":{"created-at":"2015-09-18T20:11:52.278Z","updated-at":"2015-09-18T20:11:52.278Z","initial":"D","color":"red"}},{"id":"H","type":"suits","links":{"self":"http://example.org/v1/suits/H"},"attributes":{"created-at":"2015-09-18T20:11:52.276Z","updated-at":"2015-09-18T20:11:52.276Z","initial":"H","color":"red"}},{"id":"S","type":"suits","links":{"self":"http://example.org/v1/suits/S"},"attributes":{"created-at":"2015-09-18T20:11:52.270Z","updated-at":"2015-09-18T20:11:52.270Z","initial":"S","color":"black"}}]}
+
+
+GET /v1/suits/:id
+-----------------
+
+Parameters:
+  * id -       ID of the suit to be retrieved.
+
+
+Request:
+  GET /v1/suits/S
+  Authorization: Bearer 84e038a2e21cfd659811e65bffbfd3d5cb77526ddd71362f84535b24331f355e
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"S","type":"suits","links":{"self":"http://example.org/v1/suits/S"},"attributes":{"created-at":"2015-09-18T20:11:52.270Z","updated-at":"2015-09-18T20:11:52.270Z","initial":"S","color":"black"}}}
+
+

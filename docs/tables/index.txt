@@ -1,0 +1,57 @@
+GET /v1/tables/:id
+------------------
+
+Parameters:
+  * id -       ID of the table to be retrieved.
+
+
+Request:
+  GET /v1/tables/4
+  Authorization: Bearer a9bd9a22559db6ff5eddfb60b214328633af0bbb38e43b249652061e6a407b79
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"4","type":"tables","links":{"self":"http://example.org/v1/tables/4"},"attributes":{"created-at":"2015-09-18T20:11:53.049Z","updated-at":"2015-09-18T20:11:53.049Z"},"relationships":{"table-rule-set":{"links":{"self":"http://example.org/v1/tables/4/relationships/table-rule-set","related":"http://example.org/v1/tables/4/table-rule-set"},"data":{"type":"table-rule-sets","id":"4"}},"rounds":{"links":{"self":"http://example.org/v1/tables/4/relationships/rounds","related":"http://example.org/v1/tables/4/rounds"}},"current-round":{"links":{"self":"http://example.org/v1/tables/4/relationships/current-round","related":"http://example.org/v1/tables/4/current-round"},"data":null}}}}
+
+
+GET /v1/tables
+--------------
+
+Request:
+  GET /v1/tables
+  Authorization: Bearer 9d975914cd53fd3abc653a9b1b92eff8c2cc9a8d72ec56f9cc1539fbd9c55a33
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"5","type":"tables","links":{"self":"http://example.org/v1/tables/5"},"attributes":{"created-at":"2015-09-18T20:11:53.083Z","updated-at":"2015-09-18T20:11:53.083Z"},"relationships":{"table-rule-set":{"links":{"self":"http://example.org/v1/tables/5/relationships/table-rule-set","related":"http://example.org/v1/tables/5/table-rule-set"},"data":{"type":"table-rule-sets","id":"5"}},"rounds":{"links":{"self":"http://example.org/v1/tables/5/relationships/rounds","related":"http://example.org/v1/tables/5/rounds"}},"current-round":{"links":{"self":"http://example.org/v1/tables/5/relationships/current-round","related":"http://example.org/v1/tables/5/current-round"},"data":null}}}]}
+
+
+POST /v1/tables
+---------------
+
+Parameters:
+  * type -       Must always be set to <code>tables</code>.
+
+  * table-rule-set -       The rule set that governs the table.
+
+
+Request:
+  POST /v1/tables
+  Authorization: Bearer a0dca8cc8fff88ab2703e0d6934390133b01f1bd73e327762e3c474940d24312
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"tables","relationships":{"table-rule-set":{"data":{"id":"6","type":"table-rule-sets"}}}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"6","type":"tables","links":{"self":"http://example.org/v1/tables/6"},"attributes":{"created-at":"2015-09-18T20:11:53.118Z","updated-at":"2015-09-18T20:11:53.118Z"},"relationships":{"table-rule-set":{"links":{"self":"http://example.org/v1/tables/6/relationships/table-rule-set","related":"http://example.org/v1/tables/6/table-rule-set"},"data":{"type":"table-rule-sets","id":"6"}},"rounds":{"links":{"self":"http://example.org/v1/tables/6/relationships/rounds","related":"http://example.org/v1/tables/6/rounds"}},"current-round":{"links":{"self":"http://example.org/v1/tables/6/relationships/current-round","related":"http://example.org/v1/tables/6/current-round"},"data":null}}}}
+
+

@@ -1,0 +1,63 @@
+{
+  "resource": "Wagers",
+  "http_method": "POST",
+  "route": "/v1/wagers",
+  "description": "POST /v1/wagers",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": "      Must always be set to <code>wagers</code>.\n"
+    },
+    {
+      "scope": "relationships",
+      "required": true,
+      "name": "hand",
+      "description": "      The hand that the wager is being placed on.\n"
+    },
+    {
+      "scope": "relationships",
+      "required": true,
+      "name": "player",
+      "description": "      The player that is placing the wager.\n"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "kind",
+      "description": "      The kind of wager that is being placed. Options are `intitial`.\n"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "amount",
+      "description": "      The amount of the wager, as a decimal.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/wagers",
+      "request_body": "{\"data\":{\"type\":\"wagers\",\"relationships\":{\"hand\":{\"data\":{\"id\":\"2\",\"type\":\"hands\"}},\"player\":{\"data\":{\"id\":\"2\",\"type\":\"players\"}}},\"attributes\":{\"kind\":\"initial\",\"amount\":\"25\"}}}",
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer edd50c35a6128250f59b4d63769ccd7df0ae65de12ab76034830b0cbe664ca2e"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\"data\":{\"id\":\"2\",\"type\":\"wagers\",\"links\":{\"self\":\"http://example.org/v1/wagers/2\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.596Z\",\"updated-at\":\"2015-09-18T20:11:52.596Z\",\"kind\":\"initial\",\"amount\":\"25.0\"},\"relationships\":{\"hand\":{\"links\":{\"self\":\"http://example.org/v1/wagers/2/relationships/hand\",\"related\":\"http://example.org/v1/wagers/2/hand\"},\"data\":{\"type\":\"hands\",\"id\":\"2\"}},\"player\":{\"links\":{\"self\":\"http://example.org/v1/wagers/2/relationships/player\",\"related\":\"http://example.org/v1/wagers/2/player\"},\"data\":{\"type\":\"players\",\"id\":\"2\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "resource": "Messages",
+  "http_method": "GET",
+  "route": "/v1/messages",
+  "description": "GET /v1/messages",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/messages",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 3147c663ce0d4cbaa82af907ff6e55121e4078e4cec990c368da659e4d914490"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"2\",\"type\":\"messages\",\"links\":{\"self\":\"http://example.org/v1/messages/2\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.264Z\",\"updated-at\":\"2015-09-18T20:11:53.264Z\",\"body\":\"Hi!\"},\"relationships\":{\"channel\":{\"links\":{\"self\":\"http://example.org/v1/messages/2/relationships/channel\",\"related\":\"http://example.org/v1/messages/2/channel\"},\"data\":{\"type\":\"channels\",\"id\":\"5\"}},\"author\":{\"links\":{\"self\":\"http://example.org/v1/messages/2/relationships/author\",\"related\":\"http://example.org/v1/messages/2/author\"},\"data\":null}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

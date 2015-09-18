@@ -1,0 +1,61 @@
+POST /v1/channels
+-----------------
+
+Parameters:
+  * type -       Must always be set to <code>channels</code>.
+
+  * status -       The status of the channel. Valid values are open,closed.
+
+  * name -       The name of the channel.
+
+  * description -       The description of the channel.
+
+
+Request:
+  POST /v1/channels
+  Authorization: Bearer 2217dc7a06f84ece7915232312b91479d11d07256443c42f9d57c863bd9464f2
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"channels","attributes":{"status":"closed","name":"Chitter Chatter","description":"A very interesting discussion."}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"1","type":"channels","links":{"self":"http://example.org/v1/channels/1"},"attributes":{"created-at":"2015-09-18T20:11:52.844Z","updated-at":"2015-09-18T20:11:52.844Z","name":"Chitter Chatter","description":"A very interesting discussion.","status":"closed"},"relationships":{"messages":{"links":{"self":"http://example.org/v1/channels/1/relationships/messages","related":"http://example.org/v1/channels/1/messages"}}}}}
+
+
+GET /v1/channels/:id
+--------------------
+
+Parameters:
+  * id -       ID of the channel to be retrieved.
+
+
+Request:
+  GET /v1/channels/2
+  Authorization: Bearer 7e2bdfeb3108435db6e9c20ad1900c5a647339cf1bab81d90e33454b715b3518
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"2","type":"channels","links":{"self":"http://example.org/v1/channels/2"},"attributes":{"created-at":"2015-09-18T20:11:52.861Z","updated-at":"2015-09-18T20:11:52.861Z","name":null,"description":null,"status":"open"},"relationships":{"messages":{"links":{"self":"http://example.org/v1/channels/2/relationships/messages","related":"http://example.org/v1/channels/2/messages"}}}}}
+
+
+GET /v1/channels
+----------------
+
+Request:
+  GET /v1/channels
+  Authorization: Bearer 3a172c262d3d4c02d06b88c2221f0d25ed6aef5820746836ec85f8e7f1312263
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"3","type":"channels","links":{"self":"http://example.org/v1/channels/3"},"attributes":{"created-at":"2015-09-18T20:11:52.886Z","updated-at":"2015-09-18T20:11:52.886Z","name":null,"description":null,"status":"open"},"relationships":{"messages":{"links":{"self":"http://example.org/v1/channels/3/relationships/messages","related":"http://example.org/v1/channels/3/messages"}}}}]}
+
+

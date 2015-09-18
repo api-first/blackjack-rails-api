@@ -1,0 +1,35 @@
+{
+  "resource": "Transactions",
+  "http_method": "GET",
+  "route": "/v1/transactions",
+  "description": "GET /v1/transactions",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/transactions",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer a54c76a5749b600e468efe187f29c09b25d1296671fe878158aa2c2c5b76ae7b"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"17\",\"type\":\"transactions\",\"links\":{\"self\":\"http://example.org/v1/transactions/17\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.392Z\",\"updated-at\":\"2015-09-18T20:11:53.392Z\",\"kind\":\"wager\",\"amount\":\"-100.0\"},\"relationships\":{\"player\":{\"links\":{\"self\":\"http://example.org/v1/transactions/17/relationships/player\",\"related\":\"http://example.org/v1/transactions/17/player\"},\"data\":{\"type\":\"players\",\"id\":\"13\"}},\"action\":{\"links\":{\"self\":\"http://example.org/v1/transactions/17/relationships/action\",\"related\":\"http://example.org/v1/transactions/17/action\"},\"data\":{\"type\":\"wagers\",\"id\":\"5\"}}}},{\"id\":\"18\",\"type\":\"transactions\",\"links\":{\"self\":\"http://example.org/v1/transactions/18\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.396Z\",\"updated-at\":\"2015-09-18T20:11:53.396Z\",\"kind\":\"credit\",\"amount\":\"1000.0\"},\"relationships\":{\"player\":{\"links\":{\"self\":\"http://example.org/v1/transactions/18/relationships/player\",\"related\":\"http://example.org/v1/transactions/18/player\"},\"data\":{\"type\":\"players\",\"id\":\"13\"}},\"action\":{\"links\":{\"self\":\"http://example.org/v1/transactions/18/relationships/action\",\"related\":\"http://example.org/v1/transactions/18/action\"},\"data\":null}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

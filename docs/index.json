@@ -1,0 +1,304 @@
+{
+  "resources": [
+    {
+      "name": "Cards",
+      "examples": [
+        {
+          "description": "GET /v1/cards",
+          "link": "cards/get_v1cards.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/cards/:id",
+          "link": "cards/get_v1cards:id.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "ChannelSubscriptions",
+      "examples": [
+        {
+          "description": "GET /v1/channel-subscriptions",
+          "link": "channelsubscriptions/get_v1channel-subscriptions.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/channel-subscriptions/:id",
+          "link": "channelsubscriptions/get_v1channel-subscriptions:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/channel-subscriptions",
+          "link": "channelsubscriptions/post_v1channel-subscriptions.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Channels",
+      "examples": [
+        {
+          "description": "GET /v1/channels",
+          "link": "channels/get_v1channels.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/channels/:id",
+          "link": "channels/get_v1channels:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/channels",
+          "link": "channels/post_v1channels.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Hands",
+      "examples": [
+        {
+          "description": "GET /v1/hands",
+          "link": "hands/get_v1hands.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/hands/:id",
+          "link": "hands/get_v1hands:id.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Messages",
+      "examples": [
+        {
+          "description": "GET /v1/messages",
+          "link": "messages/get_v1messages.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/messages/:id",
+          "link": "messages/get_v1messages:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/messages",
+          "link": "messages/post_v1messages.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "OAuth Tokens",
+      "examples": [
+        {
+          "description": "POST /oauth/token",
+          "link": "oauth_tokens/post_oauthtoken.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Players",
+      "examples": [
+        {
+          "description": "GET /v1/players",
+          "link": "players/get_v1players.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/players/:id",
+          "link": "players/get_v1players:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/players?filter[name]=",
+          "link": "players/get_v1players?filter[name]=.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/players?sort=name",
+          "link": "players/get_v1players?sort=name.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/players",
+          "link": "players/post_v1players.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Ranks",
+      "examples": [
+        {
+          "description": "GET /v1/ranks",
+          "link": "ranks/get_v1ranks.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/ranks/:id",
+          "link": "ranks/get_v1ranks:id.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Rounds",
+      "examples": [
+        {
+          "description": "GET /v1/rounds",
+          "link": "rounds/get_v1rounds.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/rounds/:id",
+          "link": "rounds/get_v1rounds:id.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Suits",
+      "examples": [
+        {
+          "description": "GET /v1/suits",
+          "link": "suits/get_v1suits.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/suits/:id",
+          "link": "suits/get_v1suits:id.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "TablePlayerPositions",
+      "examples": [
+        {
+          "description": "GET /v1/table-player-positions",
+          "link": "tableplayerpositions/get_v1table-player-positions.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/table-player-positions/:id",
+          "link": "tableplayerpositions/get_v1table-player-positions:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/table-player-positions",
+          "link": "tableplayerpositions/post_v1table-player-positions.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "TableRuleSets",
+      "examples": [
+        {
+          "description": "GET /v1/table-rule-sets",
+          "link": "tablerulesets/get_v1table-rule-sets.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/table-rule-sets/:id",
+          "link": "tablerulesets/get_v1table-rule-sets:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/table-rule-sets",
+          "link": "tablerulesets/post_v1table-rule-sets.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Tables",
+      "examples": [
+        {
+          "description": "GET /v1/tables",
+          "link": "tables/get_v1tables.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/tables/:id",
+          "link": "tables/get_v1tables:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/tables",
+          "link": "tables/post_v1tables.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "examples": [
+        {
+          "description": "GET /v1/transactions",
+          "link": "transactions/get_v1transactions.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/transactions/:id",
+          "link": "transactions/get_v1transactions:id.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "examples": [
+        {
+          "description": "GET /v1/users",
+          "link": "users/get_v1users.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/users/:id",
+          "link": "users/get_v1users:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/users/me",
+          "link": "users/get_v1usersme.json",
+          "groups": "all"
+        },
+        {
+          "description": "PATCH /v1/users/:id",
+          "link": "users/patch_v1users:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/users",
+          "link": "users/post_v1users.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Wagers",
+      "examples": [
+        {
+          "description": "GET /v1/wagers",
+          "link": "wagers/get_v1wagers.json",
+          "groups": "all"
+        },
+        {
+          "description": "GET /v1/wagers/:id",
+          "link": "wagers/get_v1wagers:id.json",
+          "groups": "all"
+        },
+        {
+          "description": "POST /v1/wagers",
+          "link": "wagers/post_v1wagers.json",
+          "groups": "all"
+        }
+      ]
+    }
+  ]
+}

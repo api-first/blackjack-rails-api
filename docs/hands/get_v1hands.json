@@ -1,0 +1,35 @@
+{
+  "resource": "Hands",
+  "http_method": "GET",
+  "route": "/v1/hands",
+  "description": "GET /v1/hands",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/hands",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer f605bcf0a0eb13f1cb31175e074c813dc4be3deb851d4828d56e342ea131bd93"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"10\",\"type\":\"hands\",\"links\":{\"self\":\"http://example.org/v1/hands/10\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.919Z\",\"updated-at\":\"2015-09-18T20:11:53.919Z\",\"position\":1},\"relationships\":{\"round\":{\"links\":{\"self\":\"http://example.org/v1/hands/10/relationships/round\",\"related\":\"http://example.org/v1/hands/10/round\"},\"data\":{\"type\":\"rounds\",\"id\":\"12\"}}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

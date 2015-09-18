@@ -1,0 +1,35 @@
+{
+  "resource": "ChannelSubscriptions",
+  "http_method": "GET",
+  "route": "/v1/channel-subscriptions",
+  "description": "GET /v1/channel-subscriptions",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/channel-subscriptions",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 85cf7b863996867ec2a1f49b2c60a3eb186708714390dd432184c67bfc20ff84"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"2\",\"type\":\"channel-subscriptions\",\"links\":{\"self\":\"http://example.org/v1/channel-subscriptions/2\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.498Z\",\"updated-at\":\"2015-09-18T20:11:53.498Z\"},\"relationships\":{\"channel\":{\"links\":{\"self\":\"http://example.org/v1/channel-subscriptions/2/relationships/channel\",\"related\":\"http://example.org/v1/channel-subscriptions/2/channel\"},\"data\":{\"type\":\"channels\",\"id\":\"8\"}},\"subscriber\":{\"links\":{\"self\":\"http://example.org/v1/channel-subscriptions/2/relationships/subscriber\",\"related\":\"http://example.org/v1/channel-subscriptions/2/subscriber\"},\"data\":{\"type\":\"players\",\"id\":\"15\"}}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

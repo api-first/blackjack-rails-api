@@ -1,0 +1,39 @@
+{
+  "resource": "Cards",
+  "http_method": "GET",
+  "route": "/v1/cards/:id",
+  "description": "GET /v1/cards/:id",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "      The id of the card to be retrieved. It is a concatenation of the\n      rank and suit initials (in that order). For example, the Ace of Spaces\n      id is \"AS\".\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/cards/AS",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 7f2c91d5a0e94e2296a37b64906862c533696b788a28e5e25082abf1496b3c75"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"AS\",\"type\":\"cards\",\"links\":{\"self\":\"http://example.org/v1/cards/AS\"},\"relationships\":{\"suit\":{\"links\":{\"self\":\"http://example.org/v1/cards/AS/relationships/suit\",\"related\":\"http://example.org/v1/cards/AS/suit\"},\"data\":{\"type\":\"suits\",\"id\":\"S\"}},\"rank\":{\"links\":{\"self\":\"http://example.org/v1/cards/AS/relationships/rank\",\"related\":\"http://example.org/v1/cards/AS/rank\"},\"data\":{\"type\":\"ranks\",\"id\":\"A\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

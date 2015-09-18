@@ -1,0 +1,34 @@
+GET /v1/rounds
+--------------
+
+Request:
+  GET /v1/rounds
+  Authorization: Bearer 3c515eb3b09717fe278ee09bdf51ee66cf32f46ff60973f87c5c8cba92f55a49
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"4","type":"rounds","links":{"self":"http://example.org/v1/rounds/4"},"attributes":{"created-at":"2015-09-18T20:11:53.145Z","updated-at":"2015-09-18T20:11:53.145Z","initial-betting-closed-at":"2015-09-18T20:12:23.140Z","active":true},"relationships":{"table":{"links":{"self":"http://example.org/v1/rounds/4/relationships/table","related":"http://example.org/v1/rounds/4/table"},"data":{"type":"tables","id":"7"}}}}]}
+
+
+GET /v1/rounds/:id
+------------------
+
+Parameters:
+  * id -       ID of the round to be retrieved.
+
+
+Request:
+  GET /v1/rounds/5
+  Authorization: Bearer 995b403c5c60bf85e816bd339f08573842bcb9daf51ae3d426756384c3d33c21
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"5","type":"rounds","links":{"self":"http://example.org/v1/rounds/5"},"attributes":{"created-at":"2015-09-18T20:11:53.179Z","updated-at":"2015-09-18T20:11:53.179Z","initial-betting-closed-at":"2015-09-18T20:12:23.174Z","active":true},"relationships":{"table":{"links":{"self":"http://example.org/v1/rounds/5/relationships/table","related":"http://example.org/v1/rounds/5/table"},"data":{"type":"tables","id":"8"}}}}}
+
+

@@ -1,0 +1,39 @@
+{
+  "resource": "TableRuleSets",
+  "http_method": "GET",
+  "route": "/v1/table-rule-sets/:id",
+  "description": "GET /v1/table-rule-sets/:id",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "      ID of the table rule set to be retrieved.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/table-rule-sets/16",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 9553fab1dee017df87d3c30d10fa7048c4a7d9eba51c77ad1122f9ce8e044f33"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"16\",\"type\":\"table-rule-sets\",\"links\":{\"self\":\"http://example.org/v1/table-rule-sets/16\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:54.052Z\",\"updated-at\":\"2015-09-18T20:11:54.052Z\",\"name\":\"Standard Casino\",\"deck-count\":6,\"player-position-count\":6,\"maximum-players-per-position\":3,\"maximum-bets-per-player\":6,\"no-hole-card\":false,\"original-bets-only\":null,\"initial-player-card-face-up\":true,\"blackjack-pay-out\":\"1.5\",\"standard-pay-out\":\"1.0\",\"dealer-stands-at\":17,\"dealer-draws-if-soft-stand-at\":false,\"surrender\":\"late\",\"surrender-percentage\":\"0.5\",\"insurance-available\":true,\"insurance-pay-out\":\"2.0\",\"dealer-match-available\":true,\"dealer-match-pay-out\":\"2.0\",\"double-down-minimum-percentage\":\"1.0\",\"double-down-maximum-percentage\":\"1.0\",\"split-identical-ranks-only\":false,\"maximum-double-count-per-hand\":null,\"maximum-split-count-per-hand\":null,\"may-hit-split-aces\":false,\"non-controlling-player-chooses-split-hand-to-bet-if-not-following\":false,\"player-must-stand-on-soft-21\":true,\"restrict-doubling-to-hard-totals\":null,\"dealer-wins-ties\":false,\"round-initial-betting-window-seconds\":30,\"minimum-wager-amount\":25,\"minimum-players-per-round\":1}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

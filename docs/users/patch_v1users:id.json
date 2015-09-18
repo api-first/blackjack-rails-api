@@ -1,0 +1,54 @@
+{
+  "resource": "Users",
+  "http_method": "PATCH",
+  "route": "/v1/users/:_id",
+  "description": "PATCH /v1/users/:id",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "      ID of the user to be updated.\n"
+    },
+    {
+      "required": true,
+      "name": "type",
+      "description": "      Must always be set to <code>users</code>.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "username",
+      "description": "      The unique identifier for the user.\n"
+    },
+    {
+      "scope": "attributes",
+      "name": "password",
+      "description": "      The password with which the user with authenticate.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/v1/users/23",
+      "request_body": "{\"data\":{\"id\":\"23\",\"type\":\"users\",\"attributes\":{\"username\":\"seand\",\"password\":\"!drowssap\"}}}",
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 52bb0e14bfed02cd849e675e5bd558aceddd7538643f71cd9a2e419e3a85b9e5"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"23\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/23\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.992Z\",\"updated-at\":\"2015-09-18T20:11:53.005Z\",\"username\":\"seand\",\"pit-boss\":false},\"relationships\":{\"players\":{\"links\":{\"self\":\"http://example.org/v1/users/23/relationships/players\",\"related\":\"http://example.org/v1/users/23/players\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "resource": "Messages",
+  "http_method": "GET",
+  "route": "/v1/messages/:id",
+  "description": "GET /v1/messages/:id",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "      ID of the message to be retrieved.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/messages/3",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer b8b09aaa97f83e073c4deaac393ed3c9e3ca0ab7f384791eb7764e46e071733d"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"3\",\"type\":\"messages\",\"links\":{\"self\":\"http://example.org/v1/messages/3\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.290Z\",\"updated-at\":\"2015-09-18T20:11:53.290Z\",\"body\":\"Hi!\"},\"relationships\":{\"channel\":{\"links\":{\"self\":\"http://example.org/v1/messages/3/relationships/channel\",\"related\":\"http://example.org/v1/messages/3/channel\"},\"data\":{\"type\":\"channels\",\"id\":\"6\"}},\"author\":{\"links\":{\"self\":\"http://example.org/v1/messages/3/relationships/author\",\"related\":\"http://example.org/v1/messages/3/author\"},\"data\":null}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

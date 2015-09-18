@@ -1,0 +1,48 @@
+{
+  "resource": "OAuth Tokens",
+  "http_method": "POST",
+  "route": "/oauth/token",
+  "description": "POST /oauth/token",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "grant_type",
+      "description": "      The OAuth2 grant type. Must be <code>password</code>.\n"
+    },
+    {
+      "required": true,
+      "name": "username",
+      "description": "      The username of the user.\n"
+    },
+    {
+      "required": true,
+      "name": "password",
+      "description": "      The password of the user.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/oauth/token",
+      "request_body": "grant_type=password&username=sean&password=drowssap",
+      "request_headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"access_token\":\"37e062e74a7de6bb445f1e6e357dea4c0c598510fd86a1f83db573e41d1284f6\",\"token_type\":\"bearer\",\"created_at\":1442607113}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

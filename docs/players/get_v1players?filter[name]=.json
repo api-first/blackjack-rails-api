@@ -1,0 +1,38 @@
+{
+  "resource": "Players",
+  "http_method": "GET",
+  "route": "/v1/players",
+  "description": "GET /v1/players?filter[name]=",
+  "explanation": "This is a case insensitive search.",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/players?filter[name]=barney",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 9708bdb6ce8a1a2ac5b0c86940e8dfaaccba41f1794fae1ea786bf6d8e658d49"
+      },
+      "request_query_parameters": {
+        "filter": {
+          "name": "barney"
+        }
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"5\",\"type\":\"players\",\"links\":{\"self\":\"http://example.org/v1/players/5\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.696Z\",\"updated-at\":\"2015-09-18T20:11:52.696Z\",\"name\":\"Barney\"},\"relationships\":{\"user\":{\"links\":{\"self\":\"http://example.org/v1/players/5/relationships/user\",\"related\":\"http://example.org/v1/players/5/user\"},\"data\":{\"type\":\"users\",\"id\":\"9\"}}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

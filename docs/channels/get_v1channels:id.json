@@ -1,0 +1,39 @@
+{
+  "resource": "Channels",
+  "http_method": "GET",
+  "route": "/v1/channels/:id",
+  "description": "GET /v1/channels/:id",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "      ID of the channel to be retrieved.\n"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/channels/2",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 7e2bdfeb3108435db6e9c20ad1900c5a647339cf1bab81d90e33454b715b3518"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"2\",\"type\":\"channels\",\"links\":{\"self\":\"http://example.org/v1/channels/2\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.861Z\",\"updated-at\":\"2015-09-18T20:11:52.861Z\",\"name\":null,\"description\":null,\"status\":\"open\"},\"relationships\":{\"messages\":{\"links\":{\"self\":\"http://example.org/v1/channels/2/relationships/messages\",\"related\":\"http://example.org/v1/channels/2/messages\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "resource": "Players",
+  "http_method": "GET",
+  "route": "/v1/players",
+  "description": "GET /v1/players",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/players",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer 7cb35ca10792c3f6d71cde142a99868d5efcd32c4d06948284603526a38a9cd1"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"6\",\"type\":\"players\",\"links\":{\"self\":\"http://example.org/v1/players/6\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:52.720Z\",\"updated-at\":\"2015-09-18T20:11:52.720Z\",\"name\":\"Barney\"},\"relationships\":{\"user\":{\"links\":{\"self\":\"http://example.org/v1/players/6/relationships/user\",\"related\":\"http://example.org/v1/players/6/user\"},\"data\":{\"type\":\"users\",\"id\":\"10\"}}}}]}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

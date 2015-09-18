@@ -1,0 +1,35 @@
+{
+  "resource": "Users",
+  "http_method": "GET",
+  "route": "/v1/users/me",
+  "description": "GET /v1/users/me",
+  "explanation": "Information about the authorized user.",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/users/me",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Bearer cd6e12b489b8e390627572372ef2c4b5a325fd2a348986d4dd17f3bcd6244516"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"24\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/24\"},\"attributes\":{\"created-at\":\"2015-09-18T20:11:53.017Z\",\"updated-at\":\"2015-09-18T20:11:53.017Z\",\"username\":\"sean-23\",\"pit-boss\":false},\"relationships\":{\"players\":{\"links\":{\"self\":\"http://example.org/v1/users/24/relationships/players\",\"related\":\"http://example.org/v1/users/24/players\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json"
+      },
+      "response_content_type": "application/vnd.api+json",
+      "curl": null
+    }
+  ]
+}

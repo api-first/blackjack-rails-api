@@ -1,0 +1,61 @@
+GET /v1/table-player-positions/:id
+----------------------------------
+
+Parameters:
+  * id -       ID of the table player position to be retrieved.
+
+
+Request:
+  GET /v1/table-player-positions/1
+  Authorization: Bearer 9faadbcae85a7fdcda5fe7800aceff6b54a36d6c989314fac065be1624226d12
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"1","type":"table-player-positions","links":{"self":"http://example.org/v1/table-player-positions/1"},"attributes":{"created-at":"2015-09-18T20:11:53.687Z","updated-at":"2015-09-18T20:11:53.687Z","position":1},"relationships":{"table":{"links":{"self":"http://example.org/v1/table-player-positions/1/relationships/table","related":"http://example.org/v1/table-player-positions/1/table"},"data":{"type":"tables","id":"11"}},"player":{"links":{"self":"http://example.org/v1/table-player-positions/1/relationships/player","related":"http://example.org/v1/table-player-positions/1/player"},"data":{"type":"players","id":"17"}},"hands":{"links":{"self":"http://example.org/v1/table-player-positions/1/relationships/hands","related":"http://example.org/v1/table-player-positions/1/hands"}},"current-hands":{"links":{"self":"http://example.org/v1/table-player-positions/1/relationships/current-hands","related":"http://example.org/v1/table-player-positions/1/current-hands"}}}}}
+
+
+GET /v1/table-player-positions
+------------------------------
+
+Request:
+  GET /v1/table-player-positions
+  Authorization: Bearer 6b542a2fe0b5c555cbfc5c333d7d7dbcf6edfd08f4a9a2d26b43ba2cf8157113
+  Content-Type: application/vnd.api+json
+
+Response:
+  Status: 200 OK
+  Content-Type: application/vnd.api+json
+
+  {"data":[{"id":"2","type":"table-player-positions","links":{"self":"http://example.org/v1/table-player-positions/2"},"attributes":{"created-at":"2015-09-18T20:11:53.757Z","updated-at":"2015-09-18T20:11:53.757Z","position":1},"relationships":{"table":{"links":{"self":"http://example.org/v1/table-player-positions/2/relationships/table","related":"http://example.org/v1/table-player-positions/2/table"},"data":{"type":"tables","id":"12"}},"player":{"links":{"self":"http://example.org/v1/table-player-positions/2/relationships/player","related":"http://example.org/v1/table-player-positions/2/player"},"data":{"type":"players","id":"18"}},"hands":{"links":{"self":"http://example.org/v1/table-player-positions/2/relationships/hands","related":"http://example.org/v1/table-player-positions/2/hands"}},"current-hands":{"links":{"self":"http://example.org/v1/table-player-positions/2/relationships/current-hands","related":"http://example.org/v1/table-player-positions/2/current-hands"}}}}]}
+
+
+POST /v1/table-player-positions
+-------------------------------
+
+Parameters:
+  * type -       Must always be set to <code>table-player-positions</code>.
+
+  * table -       The table of the table player position.
+
+  * player -       The player of the table player position.
+
+  * position -       The position number of the table player position.
+
+
+Request:
+  POST /v1/table-player-positions
+  Authorization: Bearer 1e36e01aed2dce924daa96df2048ddaaf91e8a3012c09ecb86ba124228a9ed05
+  Content-Type: application/vnd.api+json
+
+  {"data":{"type":"table-player-positions","relationships":{"table":{"data":{"id":"13","type":"tables"}},"player":{"data":{"id":"19","type":"players"}}},"attributes":{"position":1}}}
+
+Response:
+  Status: 201 Created
+  Content-Type: application/vnd.api+json
+
+  {"data":{"id":"3","type":"table-player-positions","links":{"self":"http://example.org/v1/table-player-positions/3"},"attributes":{"created-at":"2015-09-18T20:11:53.823Z","updated-at":"2015-09-18T20:11:53.823Z","position":1},"relationships":{"table":{"links":{"self":"http://example.org/v1/table-player-positions/3/relationships/table","related":"http://example.org/v1/table-player-positions/3/table"},"data":{"type":"tables","id":"13"}},"player":{"links":{"self":"http://example.org/v1/table-player-positions/3/relationships/player","related":"http://example.org/v1/table-player-positions/3/player"},"data":{"type":"players","id":"19"}},"hands":{"links":{"self":"http://example.org/v1/table-player-positions/3/relationships/hands","related":"http://example.org/v1/table-player-positions/3/hands"}},"current-hands":{"links":{"self":"http://example.org/v1/table-player-positions/3/relationships/current-hands","related":"http://example.org/v1/table-player-positions/3/current-hands"}}}}}
+
+
