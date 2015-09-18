@@ -46,6 +46,8 @@ RSpec.resource "Users", :authenticated, :authorized do
 
     example_request "GET /v1/users/:id" do
       expect(status).to eq 200
+      parsed = JSON.parse(response_body)
+      expect(parsed["data"]["relationships"].keys).to include "players"
     end
   end
 

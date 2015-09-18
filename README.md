@@ -46,7 +46,7 @@ Visit `http://localhost:5000` and you'll be redirected to the documentation. Tha
 
 ### Deployment
 
-* **Codeship**: We'll use a continuous integration server on [Codeship](https://codeship.com). It will run the test suite with every commit that is pushed to GitHub and also rebuild the API documentation for us.
+* **Codeship**: We'll use a continuous integration server on [Codeship](https://codeship.com). It will run the test suite with every commit that is pushed to GitHub and also rebuild the API documentation for us. Let's show this now!
 * **Heroku**: We'll use [Heroku Pipelines](https://devcenter.heroku.com/articles/pipelines) to manage staging and production environments. The staging server will automatically rebuild every time there is a commit to the `documented` branch. We'll also use the [Review Apps](https://devcenter.heroku.com/articles/pipelines#review-apps) feature to build applications for PRs.
 
 ### Documentation

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     jsonapi_resources :players
     jsonapi_resources :wagers
     jsonapi_resources :transactions
+    jsonapi_resources :channels
+    jsonapi_resources :messages
+    jsonapi_resources :channel_subscriptions
   end
 
 end
