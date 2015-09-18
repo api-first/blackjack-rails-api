@@ -6,7 +6,7 @@ class Player < ActiveRecord::Base
 
   has_many :wagers
 
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
   validates :user, presence: true
 

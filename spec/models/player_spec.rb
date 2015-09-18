@@ -23,6 +23,12 @@ RSpec.describe Player do
     expect(subject.errors[:user]).to include "can't be blank"
   end
 
+  it "can destroy a player once it has transactions" do
+    subject = FactoryGirl.create(:player)
+    expect(subject.transactions.count).to be > 0
+    expect{subject.destroy}.not_to raise_error
+  end
+
   it "is credited with 1000 upon creation" do
     subject = FactoryGirl.create(:player)
     expect(subject.balance).to eq 1000
