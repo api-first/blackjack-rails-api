@@ -62,9 +62,10 @@ module ResourcePolicyAuthorization
     private
 
     def policy_record_for(records)
-      case records
-      when ActiveRecord::Base then records
-      when ActiveRecord::Relation then records.first || records.model
+      if records.is_a? ActiveRecord::Relation
+        records.first || records.model
+      else
+        records
       end
     end
 
