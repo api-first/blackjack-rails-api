@@ -43,9 +43,8 @@ module ResourcePolicyAuthorization
     def authorize_policy(user, records, controller)
       controller.try :policy_authorized!
 
-      case records
-      when ActiveRecord::Relation
-        return if records.count == 0
+      if records.is_a?(ActiveRecord::Relation) && records.count == 0
+        return
       end
 
       policy = Pundit.policy!(user, policy_record_for(records))
