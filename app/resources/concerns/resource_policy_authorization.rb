@@ -10,11 +10,11 @@ module ResourcePolicyAuthorization
   delegate :authorize_policy, to: :class
 
   def authorize
-    authorize_policy(context[:current_user], model, context[:controller])
+    authorize_policy(context[:current_user], @model, context[:controller])
   end
 
   def records_for(association_name, options={})
-    records = model.public_send(association_name)
+    records = @model.public_send(association_name)
 
     return records if context.nil?
 
