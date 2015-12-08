@@ -52,7 +52,7 @@ module ResourcePolicyAuthorization
 
       if !_authorized?(policy, permission)
         raise Pundit::NotAuthorizedError.new(
-          query: permission_for(controller, policy),
+          query: permission,
           record: policy_record_for(records)
         )
       end
