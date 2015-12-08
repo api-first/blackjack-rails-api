@@ -10,11 +10,11 @@ module ResourcePolicyAuthorization
   delegate :authorize_policy, to: :class
 
   def authorize
-    authorize_policy(context[:current_user], model, context[:controller])
+    authorize_policy(context[:current_user], @model, context[:controller])
   end
 
   def records_for(association_name, options={})
-    records = model.public_send(association_name)
+    records = @model.public_send(association_name)
 
     return records if context.nil?
 
@@ -26,17 +26,14 @@ module ResourcePolicyAuthorization
 
   class_methods do
     def records(options = {})
+      records_base = options.fetch(:records_base) { super }
       context = options.fetch(:context) { Hash.new }
-      authorized_records(
-        context[:current_user],
-        options[:records_base] || _model_class,
-        options[:context][:controller]
-      )
+      authorized_records(context[:current_user], records_base, context[:controller])
     end
 
     def authorized_records(user, records, controller)
       records = Pundit.policy_scope!(user, records)
-      controller.policy_scoped!
+      controller.try :policy_scoped!
 
       authorize_policy(user, records, controller)
 
@@ -44,11 +41,10 @@ module ResourcePolicyAuthorization
     end
 
     def authorize_policy(user, records, controller)
-      controller.policy_authorized!
+      controller.try :policy_authorized!
 
-      case records
-      when ActiveRecord::Relation
-        return if records.count == 0
+      if records.is_a?(ActiveRecord::Relation) && records.count == 0
+        return
       end
 
       policy = Pundit.policy!(user, policy_record_for(records))
@@ -56,7 +52,7 @@ module ResourcePolicyAuthorization
 
       if !_authorized?(policy, permission)
         raise Pundit::NotAuthorizedError.new(
-          query: permission_for(controller, policy),
+          query: permission,
           record: policy_record_for(records)
         )
       end
@@ -65,16 +61,18 @@ module ResourcePolicyAuthorization
     private
 
     def policy_record_for(records)
-      case records
-      when ActiveRecord::Base then records
-      when ActiveRecord::Relation then records.first || records.model
+      if records.is_a? ActiveRecord::Relation
+        records.first || records.model
+      else
+        records
       end
     end
 
     def permission_for(controller, policy)
-      case controller.model_class == policy.model_class
-      when true then controller.action_name.to_s + "?"
-      when false then "show?"
+      if controller && controller.model_class == policy.model_class
+        controller.action_name.to_s + "?"
+      else
+        "show?"
       end
     end
 
