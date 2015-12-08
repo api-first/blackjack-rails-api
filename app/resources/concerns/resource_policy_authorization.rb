@@ -26,12 +26,9 @@ module ResourcePolicyAuthorization
 
   class_methods do
     def records(options = {})
+      records_base = options.fetch(:records_base) { super }
       context = options.fetch(:context) { Hash.new }
-      authorized_records(
-        context[:current_user],
-        options[:records_base] || _model_class,
-        options[:context][:controller]
-      )
+      authorized_records(context[:current_user], records_base, context[:controller])
     end
 
     def authorized_records(user, records, controller)
