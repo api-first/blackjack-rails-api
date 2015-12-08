@@ -33,7 +33,7 @@ module ResourcePolicyAuthorization
 
     def authorized_records(user, records, controller)
       records = Pundit.policy_scope!(user, records)
-      controller.policy_scoped!
+      controller.try :policy_scoped!
 
       authorize_policy(user, records, controller)
 
@@ -41,7 +41,7 @@ module ResourcePolicyAuthorization
     end
 
     def authorize_policy(user, records, controller)
-      controller.policy_authorized!
+      controller.try :policy_authorized!
 
       case records
       when ActiveRecord::Relation
@@ -69,9 +69,10 @@ module ResourcePolicyAuthorization
     end
 
     def permission_for(controller, policy)
-      case controller.model_class == policy.model_class
-      when true then controller.action_name.to_s + "?"
-      when false then "show?"
+      if controller && controller.model_class == policy.model_class
+        controller.action_name.to_s + "?"
+      else
+        "show?"
       end
     end
 
