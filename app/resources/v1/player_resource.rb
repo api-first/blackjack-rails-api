@@ -3,6 +3,8 @@ module V1
 
     attribute :name
 
+    attribute :avatar
+
     has_one :user
 
     filter :name
@@ -11,7 +13,8 @@ module V1
       def creatable_fields(context)
         [
           :user,
-          :name
+          :name,
+          :avatar
         ]
       end
 
