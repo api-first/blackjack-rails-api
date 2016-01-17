@@ -37,7 +37,7 @@ class Table < ActiveRecord::Base
 
   def positions
     return [] unless table_rule_set
-    
+
     @positions ||= (1..table_rule_set.player_position_count).to_a
   end
 

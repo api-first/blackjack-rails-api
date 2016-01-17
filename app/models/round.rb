@@ -32,4 +32,8 @@ class Round < ActiveRecord::Base
       end
     end
   end
+
+  def total_wagers
+    Wager.where(hand: hands).sum(:amount)
+  end
 end

@@ -7,6 +7,8 @@ module V1
 
     attribute :active
 
+    attribute :total_wagers
+
     class << self
       def creatable_fields(context)
         []

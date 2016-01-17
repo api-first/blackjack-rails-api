@@ -48,4 +48,37 @@ RSpec.describe Round do
     table_player_position = FactoryGirl.create(:table_player_position, table: table)
     expect(table_player_position.hands).not_to be_empty
   end
+
+  describe "#total_wagers" do
+    let!(:round) { FactoryGirl.create(:round) }
+
+    context "across different hands" do
+      before do
+        hand1 = FactoryGirl.build(:hand)
+        hand1.wagers << FactoryGirl.build(:wager, amount: 200)
+        round.hands << hand1
+
+        hand2 = FactoryGirl.build(:hand)
+        hand2.wagers << FactoryGirl.build(:wager, amount: 100)
+        round.hands << hand2
+      end
+
+      it 'correctly calculates total_wagers' do
+        expect(round.total_wagers).to eq(300)
+      end
+    end
+
+    context "wagers across many wagers within a hand " do
+      before do
+        hand1 = FactoryGirl.build(:hand)
+        hand1.wagers << FactoryGirl.build(:wager, amount: 200)
+        hand1.wagers << FactoryGirl.build(:wager, amount: 100)
+        round.hands << hand1
+      end
+
+      it 'correctly calculates total_wagers' do
+        expect(round.total_wagers).to eq(300)
+      end
+    end
+  end
 end
