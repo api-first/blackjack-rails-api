@@ -11,6 +11,21 @@ class Wager < ActiveRecord::Base
 
   validates :player, presence: true
 
+  validate :_wager_is_less_than_maximum_wager_amount
+
+  def maximum_wager_amount
+    return Float::INFINITY unless hand && hand.round && hand.round.table && hand.round.table.table_rule_set
+    hand.round.table.table_rule_set.maximum_wager_amount
+  end 
+
+  def _wager_is_less_than_maximum_wager_amount
+    if self.amount > maximum_wager_amount
+      errors.add ("amount must be less than or equal to the maxium_wager_amount #{maximum_wager_amount}")
+    end
+  end
+
+
+
   before_validation :build_matching_financial_transaction
 
   def minimum_amount
@@ -41,4 +56,5 @@ class Wager < ActiveRecord::Base
 
     build_financial_transaction(amount: (-1 * amount), player: player, kind: :wager, action: self)
   end
+
 end

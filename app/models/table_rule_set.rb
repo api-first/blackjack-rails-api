@@ -93,5 +93,9 @@ class TableRuleSet < ActiveRecord::Base
       errors.add :restrict_doubling_to_hard_totals, "must not contain any values less than 2 or greater than 21"
     end
   end
+  
+  def maximum_wager_amount
+    self.minimum_wager_amount * 10
+  end
 
 end

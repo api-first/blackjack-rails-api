@@ -75,4 +75,11 @@ RSpec.describe Wager do
     expect(subject.minimum_amount).to eq Float::INFINITY
   end
 
+  it "validates that its amount is less than or equal to the maximum_wager_amount for the table" do
+    expect(subject).to receive(:minimum_amount).and_return(100)
+    subject.amount = 1001
+    subject.valid?
+    expect(subject.errors[:amount]).to include "must be less than or equal to 1001"
+  end
+
 end
